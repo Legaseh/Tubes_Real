@@ -1,0 +1,126 @@
+body{
+    background-image: url(/Gambar/backgroundMap.jpg);
+    margin: 0px;
+    font-family: 'Amatic SC', cursive;
+}
+h1{
+    font-family: 'Luckiest Guy', cursive;
+    font-weight: 100;
+    text-shadow: 
+        -1px -19px 0 #000,  
+         5px -5px 0 #000,
+        -5px  5px 0 #000,
+         5px  5px 0 #000;
+    font-size: 100px;
+}
+.logo{
+    width: 40px;
+    height: 40px;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Fredericka the Great', cursive;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    background-image: url(/Gambar/backgroundWeb.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    color: white;
+    font-size: large;
+    text-align: center;
+}
+.nav{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    margin: auto;
+}
+.listNav{
+    background-color: rgba(255, 235, 205, 0);
+    border-radius: 5px;
+    background-color: #eb393000;
+    width: 412px;
+}
+.nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0px;
+    gap: 15px;
+    justify-content: center;
+    margin: 0;
+}
+.nav ul li {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #93f76f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 20px;
+}
+.nav ul .listIlang {
+    background-color: #d79a3100;
+}
+.navTacoA{
+    background-color: rgb(235, 166, 40);
+    color: orange;
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+}
+.navTacoB{
+    background-color: rgb(235, 166, 40);
+    color: orange;
+    border-bottom-left-radius: 50% 100%;
+    border-bottom-right-radius: 50% 100%;
+}
+.main{
+    background-color: yellow;
+    height: 2000px; /* Simulasi konten panjang */
+    padding: 20px;
+}
+.footer{
+    background-color: purple;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+
+/* Bagian bukan struktur web */
+.taco3d{
+    height: 50px;
+    width: 50px;
+}
+
+
+@keyframes hurufMasuk {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.judul-animasi span {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(-30px);
+  animation: hurufMasuk 0.5s forwards;
+}
+@media (max-width: 600px) {
+    .header{
+        height: 350px;
+        width: 412px;
+    }
+    h1{
+        width: 412px;
+        font-size: 55px;
+    }
+}
+
