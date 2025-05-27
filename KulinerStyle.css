@@ -1,5 +1,5 @@
 body{
-    background-image: url(/Gambar/backgroundMap.jpg);
+    background-image: url(/Gambar/backgroundMap1.jpg);
     margin: 0px;
     font-family: 'Amatic SC', cursive;
 }
@@ -82,7 +82,7 @@ a{
     border-bottom-right-radius: 50% 100%;
 }
 .main{
-    background-color: yellow;
+    background-color: rgb(240, 240, 85);
     height: 2000px; /* Simulasi konten panjang */
     padding: 20px;
 }
@@ -121,6 +121,9 @@ a{
     h1{
         width: 412px;
         font-size: 55px;
+    }
+    .nav{
+        display: none;
     }
 }
 
