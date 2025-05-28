@@ -3,6 +3,9 @@ body{
     margin: 0px;
     font-family: 'Amatic SC', cursive;
 }
+.menu-toggle{
+    display: none;
+}
 h1{
     font-family: 'Luckiest Guy', cursive;
     font-weight: 100;
@@ -123,6 +126,46 @@ a{
         font-size: 55px;
     }
     .nav{
+        display: block;
+        position: fixed;
+        right: -250px; /* Hide the menu initially */
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: rgba(235, 166, 40, 0.95);
+        transition: right 0.3s ease-in-out;
+    }
+    .nav.active {
+        right: 0; /* Show the menu when active class is added */
+    }
+    .nav ul.listNav {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 60px 0;
+    }
+    .nav ul li {
+        width: 80%;
+        height: auto;
+        margin: 10px auto;
+        background-color: #93f76f;
+    }
+    .nav ul .listIlang {
+        display: none;
+    }
+    /* Hamburger menu button */
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 1000;
+        background-color: #93f76f;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .navTacoA, .navTacoB {
         display: none;
     }
 }
