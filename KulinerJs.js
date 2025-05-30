@@ -50,3 +50,29 @@ document.addEventListener('DOMContentLoaded', function() {
         nav.classList.toggle('active');
     });
 });
+
+// Tambahkan navigasi card
+document.addEventListener('DOMContentLoaded', function() {
+    const cardContainer = document.querySelector('.card-container');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const cardWidth = 320; // Card width + gap
+
+    let scrollPosition = 0;
+
+    nextBtn.addEventListener('click', () => {
+        scrollPosition += cardWidth;
+        if (scrollPosition > cardContainer.scrollWidth - cardContainer.clientWidth) {
+            scrollPosition = cardContainer.scrollWidth - cardContainer.clientWidth;
+        }
+        cardContainer.style.transform = `translateX(-${scrollPosition}px)`;
+    });
+
+    prevBtn.addEventListener('click', () => {
+        scrollPosition -= cardWidth;
+        if (scrollPosition < 0) {
+            scrollPosition = 0;
+        }
+        cardContainer.style.transform = `translateX(-${scrollPosition}px)`;
+    });
+});
