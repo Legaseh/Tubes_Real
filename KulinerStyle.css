@@ -1,5 +1,6 @@
 body{
-    background-image: url(/Gambar/backgroundMap1.jpg);
+    /* background-image: url(/Gambar/backgroundMap1.jpg); */
+    background-color: rgb(240, 240, 85);
     margin: 0px;
     font-family: "Roboto", cursive;
 }
