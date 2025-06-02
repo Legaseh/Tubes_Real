@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daftar Makanan Latin Amerika - Dropdown Resep</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  /* Latin America inspired color palette */
+  :root {
+    --primary-color: #D84315; /* bright mexican red */
+    --secondary-color: #FF7043; /* soft orange */
+    --background-color: #FFF3E0; /* warm cream */
+    --card-bg: #FFFFFF;
+    --text-color: #4E342E;
+    --accent-color: #FFAB91;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--background-color);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    max-width: 900px;
+    width: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 2px 2px var(--accent-color);
+  }
+
+  .food-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(216, 67, 21, 0.3);
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-left: 8px solid var(--primary-color);
+    transition: transform 0.3s ease;
+  }
+
+  .food-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(216, 67, 21, 0.5);
+  }
+
+  .food-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--secondary-color);
+  }
+
+  .food-content {
+    padding: 1.6rem 1.8rem;
+  }
+
+  .food-title {
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin-bottom: 0.4rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .toggle-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .toggle-button.open {
+    transform: rotate(45deg);
+  }
+
+  .food-recipe {
+    font-weight: 400;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #5D4037;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 0;
+  }
+
+  .food-recipe.open {
+    max-height: 500px; /* large enough to show full text */
+    padding-top: 1rem;
+  }
+
+  @media (min-width: 750px) {
+    .food-card {
+      flex-direction: row;
+      height: 220px;
+    }
+    .food-image {
+      width: 280px;
+      height: 100%;
+      border-bottom: none;
+      border-right: 5px solid var(--secondary-color);
+      border-radius: 0;
+      object-fit: cover;
+    }
+    .food-content {
+      padding: 1.6rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .food-title {
+      margin-bottom: 0.8rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Daftar Makanan Latin Amerika & Resep</h1>
+
+    <article class="food-card">
+      <img src="Gambar-Food/gambar.taco.jpg" alt="Taco" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Taco
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Taco">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Tortilla jagung atau gandum diisi dengan daging (sapi, ayam, babi), sayuran segar, keju, dan saus salsa. Cara membuat: Panaskan tortilla, isi dengan daging cincang berbumbu yang telah dimasak, tambahkan irisan selada, tomat, keju parut, dan salsa segar.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="Gambar-Food/gambar.burrito.jpg" alt="Buritto" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Buritto
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Buritto">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Tortilla gandum besar diisi dengan nasi, kacang, daging, keju, dan sayuran, kemudian digulung rapat. Cara membuat: Isi tortila dengan nasi berbumbu, kacang hitam atau merah, daging cincang, keju, dan guacamole lalu gulung hingga rapat dan panggang sebentar.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="Gambar-Food/gambar.chiles.jpg" alt="Chiles en Nogada" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Chiles en Nogada
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Chiles en Nogada">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Cabai poblano diisi dengan campuran daging cincang, buah kering, dan bumbu; disiram saus krim kenari putih. Cara membuat: Goreng cabai poblano, isi dengan daging sapi dan buah kering berbumbu, tutup dengan saus kenari yang creamy, taburi biji delima.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="Gambar-Food/gambar.tamales.jpg" alt="Tamales" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Tamales
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Tamales">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Adonan jagung kukus yang diisi dengan daging, sayuran atau saus, dibungkus daun jagung. Cara membuat: Buat adonan masa dari jagung, campur isian daging berempah, bungkus dengan daun jagung, lalu kukus hingga matang.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2017/07/16/14/04/quesadilla-2505781_1280.jpg" alt="Quesadilla" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Quesadilla
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Quesadilla">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Tortilla diisi keju dan bahan lain seperti daging atau sayuran, dipanggang hingga keju meleleh. Cara membuat: Letakkan keju dan topping di setengah tortilla, lipat dan panggang di wajan hingga keju meleleh dan tortilla renyah.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2020/04/16/15/55/enchiladas-5040812_1280.jpg" alt="Enchilada" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Enchilada
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Enchilada">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Tortilla diisi dengan daging atau keju, digulung dan disiram saus cabai merah, kemudian dipanggang. Cara membuat: Gulung tortila yang sudah diisi dengan daging atau keju, letakkan dalam loyang, siram saus cabai pedas, dan panggang hingga matang.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2017/11/18/21/40/soup-2955947_1280.jpg" alt="Pozole" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Pozole
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Pozole">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Sup jagung hominy dengan daging babi atau ayam, disajikan dengan sayuran segar dan jeruk nipis. Cara membuat: Rebus daging dengan jagung hominy, bumbui, sajikan dengan kol cincang, radish, daun bawang, dan jeruk nipis.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2021/08/16/15/34/mole-6543517_1280.jpg" alt="Mole" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Mole
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Mole">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Saus kaya bumbu dengan cokelat, cabai, rempah, disajikan dengan ayam atau kalkun. Cara membuat: Campur cabai kering, cokelat, biji wijen, rempah, masak hingga mengental, siram ke daging ayam panggang.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2019/07/28/19/10/fajitas-4369849_1280.jpg" alt="Fajitas" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Fajitas
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Fajitas">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Irisan daging panggang dengan paprika dan bawang bombay, dihidangkan dengan tortilla. Cara membuat: Panggang daging sapi atau ayam dengan paprika dan bawang, sajikan dengan tortilla hangat dan topping seperti salsa dan krim asam.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2017/10/31/13/48/tostada-2903638_1280.jpg" alt="Tostada" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Tostada
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Tostada">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Tortilla jagung yang digoreng garing, diisi dengan kacang, daging, sayuran, keju, dan saus. Cara membuat: Goreng tortilla hingga garing, taburi dengan kacang refried, daging cincang, selada, tomat, keju, dan sedikit saus salsa.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2020/08/08/19/41/corn-5479319_1280.jpg" alt="Elote" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Elote
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Elote">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Jagung rebus atau panggang dengan mentega, mayones, keju kwartjar, dan bubuk cabai. Cara membuat: Panggang jagung, oleskan mentega dan mayones, taburi keju putih dan bubuk cabai, sajikan dengan jeruk nipis.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2016/09/24/21/16/guacamole-1690106_1280.jpg" alt="Guacamole" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Guacamole
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Guacamole">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Saus alpukat segar dicampur tomat, bawang, jeruk nipis, dan cabai. Cara membuat: Haluskan alpukat, campur dengan tomat cincang, bawang merah, cabai, perasan jeruk nipis, dan garam sesuai selera.
+        </div>
+      </div>
+    </article>
+
+    <article class="food-card">
+      <img src="https://cdn.pixabay.com/photo/2018/02/14/17/02/nachos-3157208_1280.jpg" alt="Nacho" class="food-image" />
+      <div class="food-content">
+        <div class="food-title">
+          Nacho
+          <button class="toggle-button" aria-expanded="false" aria-label="Toggle resep Nacho">&#x2795;</button>
+        </div>
+        <div class="food-recipe" aria-hidden="true">
+          Keripik jagung topping keju cair, daging cincang, jalapeños, dan sayuran segar. Cara membuat: Susun keripik jagung, taburi dengan keju leleh, daging cincang berbumbu, jalapeños, dan daun bawang, panggang sebentar dan sajikan hangat.
+        </div>
+      </div>
+    </article>
+
+  </div>
+<script>
+  document.querySelectorAll('.toggle-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const recipe = button.closest('.food-content').querySelector('.food-recipe');
+      const isOpen = recipe.classList.toggle('open');
+      button.classList.toggle('open', isOpen);
+      button.setAttribute('aria-expanded', isOpen);
+      recipe.setAttribute('aria-hidden', !isOpen);
+      button.innerHTML = isOpen ? '&#x2796;' : '&#x2795;';
+    });
+  });
+</script>
+</body>
+</html>
