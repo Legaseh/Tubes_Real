@@ -1,0 +1,93 @@
+[
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8951.23529224325!2d-99.15294026740688!3d19.389457177687596!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff06ebdada0d%3A0xe8525eb674e5e516!2sEl%20Vilsito!5e0!3m2!1sen!2sid!4v1748579750406!5m2!1sen!2sid",
+    "title": "El Vilsito",
+    "signatureDish": "Tacos Al Pastor",
+    "description": "Famous for their tacos al pastor, featuring marinated pork slow-roasted on a vertical spit with pineapple",
+    "locationLink": "https://maps.app.goo.gl/jhL1a2wJE9TFWh7X8"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d60215.45861911272!2d-99.2453048!3d19.3922544!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff7a7b053bf5%3A0x4a9cd0f2d102f09a!2sEl%20Huequito!5e0!3m2!1sen!2sid!4v1748688430161!5m2!1sen!2sid",
+    "title": "El Huequito",
+    "signatureDish": "Buritto de Chicharrón Prensado",
+    "description": "Mexican-style burrito filled with tender, pressed pork cracklings (chicharrón prensado), often cooked in a rich, flavorful tomato-based sauce.",
+    "locationLink": "https://maps.app.goo.gl/q9ykJ4S9oY9Lq8UB8"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.456078777436!2d-99.1375946!3d19.435893499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92cfec3ffff%3A0xcbea448ab23c5a9e!2sCaf%C3%A9%20De%20Tacuba!5e0!3m2!1sen!2sid!4v1748689836388!5m2!1sen!2sid",
+    "title": "Cafe De Tacuba",
+    "signatureDish": "Chile En Nagoda Tradicional",
+    "description": "Featuring poblano chiles stuffed with a savory mixture of meat, fruits, and spices, topped with a creamy walnut-based sauce and pomegranate seeds.",
+    "locationLink": "https://maps.app.goo.gl/tf74Day1W7WpguF47"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.750753374717!2d-99.13901059999999!3d19.379942099999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fe514c86e4c7%3A0x3d7c6f9aabdc7277!2sTamaler%C3%ADa%20Nativitas!5e0!3m2!1sen!2sid!4v1748690078897!5m2!1sen!2sid",
+    "title": "Tamaleria Nativitas",
+    "signatureDish": "Tamales and Atole",
+    "description": "Dishes made of dough from corn filled with meats, cheeses, vegetables, or chilies, wrapped in corn husks or banana leaves, and steamed.",
+    "locationLink": "https://maps.app.goo.gl/4zv8Qhdia5KnnFTw6"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d120389.29366549388!2d-99.2771417!3d19.4484332!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92764f329b3%3A0x1580135abcd5cfa2!2sLos%20Machetes%20de%20Amparito!5e0!3m2!1sen!2sid!4v1748700124946!5m2!1sen!2sid",
+    "title": "Los Machetes de Amparito",
+    "signatureDish": "Quesadilla Machetes",
+    "description": "Large folded tortillas filled with melted cheese and often additional ingredients like meats or vegetables. Have generous size and crispy edges.",
+    "locationLink": "https://maps.app.goo.gl/mrn42dMoYv8Yc1kBA"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.7805952258354!2d-99.1777489!3d19.4650242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8906b1fb1ed%3A0x143fa98fad273f59!2sRestaurante%20Nicos!5e0!3m2!1sen!2sid!4v1748700167024!5m2!1sen!2sid",
+    "title": "Restaurante Nicos",
+    "signatureDish": "Enchiladas Queretanas",
+    "description": "Featuring corn tortillas filled with shredded chicken, topped with a rich red chili sauce, and garnished with fresh cheese, onions, and cream.",
+    "locationLink": "https://maps.app.goo.gl/eQ3yCCsAviDX8r6q6"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d120406.86155290555!2d-99.2970224!3d19.4247411!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff3663d7a891%3A0xea2960938f6d444f!2sLa%20Casa%20de%20To%C3%B1o%20en%20Zona%20Rosa!5e0!3m2!1sen!2sid!4v1748700189458!5m2!1sen!2sid",
+    "title": "La Casa de Tono en Zona Rosa",
+    "signatureDish": "Pozole Grande",
+    "description": "Hearty Mexican stew made with large kernels of hominy, tender pork or chicken, and flavorful broth. It’s typically garnished with shredded cabbage, radishes, onions, lime, and chili.",
+    "locationLink": "https://maps.app.goo.gl/4BCJtudLHMW23cj46"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3762.960934645041!2d-99.1628156!3d19.4140938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff40e7e5b415%3A0xc69645aa482f94f0!2sMux%20Restaurante!5e0!3m2!1sen!2sid!4v1748700216047!5m2!1sen!2sid",
+    "title": "Mux Restaurante",
+    "signatureDish": "Green Mole",
+    "description": "Vibrant Mexican sauce made with fresh green ingredients like tomatillos, cilantro, pumpkin seeds, and green chilies.",
+    "locationLink": "https://maps.app.goo.gl/xXCfKKsqwQpdzv3S8"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3762.4831212651147!2d-99.1436769!3d19.4347264!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92c98c8a4b5%3A0x80db91d568a619a5!2sLos%20Callejeros!5e0!3m2!1sen!2sid!4v1748700243040!5m2!1sen!2sid",
+    "title": "Los Callejeros",
+    "signatureDish": "Fajitas de Pollo",
+    "description": "Featuring grilled, marinated chicken strips served sizzling with sautéed bell peppers and onions wrapped in warm tortillas with toppings like salsa, guacamole, and sour cream.",
+    "locationLink": "https://maps.app.goo.gl/HTx9XykfNyUT1f518"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3764.378046652159!2d-99.1640887!3d19.3527767!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ffc478eb8699%3A0x1369eaf9b036b1b3!2sTostadas!5e0!3m2!1sen!2sid!4v1748700307834!5m2!1sen!2sid",
+    "title": "Tostadas",
+    "signatureDish": "Tostada de Jaiba",
+    "description": "Crispy tortilla topped with fresh, flavorful crab meat (jaiba), usually mixed with mayonnaise, lime, and seasonings.",
+    "locationLink": "https://maps.app.goo.gl/6jyeFSkAbj3MeZqH9"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.021986102359!2d-99.1711711!3d19.411455999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff13d666738f%3A0x3dbc42f5a7737015!2sElotes%20y%20Esquites%20Los%20Juniors!5e0!3m2!1sen!2sid!4v1748700321660!5m2!1sen!2sid",
+    "title": "Elotes y Esquites Los Juniors",
+    "signatureDish": "Elote",
+    "description": "Grilled or boiled corn on the cob, coated with mayonnaise, cheese, chili powder, lime juice, and butter. Combination of sweet, spicy, and tangy tastes.",
+    "locationLink": "https://maps.app.goo.gl/caJkZGEiwFcX11pw9"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3762.5269545371348!2d-99.1385915!3d19.4328345!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92d245acbc1%3A0x8eaf0405fda6bfce!2sPotzollcalli!5e0!3m2!1sen!2sid!4v1748700347502!5m2!1sen!2sid",
+    "title": "Potzollcalli",
+    "signatureDish": "Guacamole Potzollcalli",
+    "description": "Avocado mixed with fresh ingredients like tomatoes, onions, chili peppers, and herbs. Enjoyed with tortilla chips or as a topping for various dishes.",
+    "locationLink": "https://maps.app.goo.gl/BfSmRbsW4mdV2zRt9"
+  },
+  {
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10646.587840113993!2d11.572827!3d48.1556111!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e750a7f84a385%3A0xc14ad1bc24bec07d!2sLa%20Burrita!5e0!3m2!1sen!2sid!4v1748700367466!5m2!1sen!2sid",
+    "title": "La Burrita",
+    "signatureDish": "Nachos la Burrita",
+    "description": "Crispy tortilla chips topped with melted cheese, seasoned meat, beans, jalapeños, and fresh toppings like salsa, sour cream, and guacamole.",
+    "locationLink": "https://maps.app.goo.gl/vhZJQgEgwrMeLTm97"
+  }
+]

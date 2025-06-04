@@ -1,5 +1,4 @@
 body{
-    /* background-image: url(/Gambar/backgroundMap1.jpg); */
     background-color: rgb(240, 240, 85);
     margin: 0px;
     font-family: "Roboto", cursive;
@@ -16,13 +15,16 @@ h1{
     text-shadow: 
         -1px -19px 0 #000,  
          5px -5px 0 #000,
-        -5px  5px 0 #000,
+        -5px  5px 0 #ad1e1e,
          5px  5px 0 #000;
     font-size: 100px;
 }
 a{
     text-decoration: none;
     color: black;
+}
+.judul-animasi{
+    margin-top: 150px;
 }
 /* ----- text text kayak h1-6, p, span dll (Selesai) ----- */
 
@@ -203,85 +205,12 @@ iframe{
 .location-link:hover {
     background: #5dd565;
 }
-.footer{
-    background-color: purple;
-    padding: 20px;
-    color: white;
-    text-align: center;
-}
 
 
 /* Bagian bukan struktur web */
 .taco3d{
     height: 50px;
     width: 50px;
-}
-
-
-@keyframes hurufMasuk {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.judul-animasi span {
-  opacity: 0;
-  display: inline-block;
-  transform: translateY(-30px);
-  animation: hurufMasuk 0.5s forwards;
-}
-@media (max-width: 600px) {
-    .header{
-        height: 350px;
-        width: 412px;
-    }
-    h1{
-        width: 412px;
-        font-size: 55px;
-    }
-    .nav{
-        display: block;
-        position: fixed;
-        right: -250px; /* Hide the menu initially */
-        top: 0;
-        width: 250px;
-        height: 100vh;
-        background-color: rgba(235, 166, 40, 0.95);
-        transition: right 0.3s ease-in-out;
-    }
-    .nav.active {
-        right: 0; /* Show the menu when active class is added */
-    }
-    .nav ul.listNav {
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        padding: 60px 0;
-    }
-    .nav ul li {
-        width: 80%;
-        height: auto;
-        margin: 10px auto;
-        background-color: #93f76f;
-    }
-    .nav ul .listIlang {
-        display: none;
-    }
-    /* Hamburger menu button */
-    .menu-toggle {
-        display: block;
-        position: fixed;
-        right: 20px;
-        top: 20px;
-        z-index: 1000;
-        background-color: #93f76f;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .navTacoA, .navTacoB {
-        display: none;
-    }
 }
 
 .footer{
@@ -291,12 +220,6 @@ iframe{
     text-align: center;
 }
 
-
-/* Bagian bukan struktur web */
-.taco3d{
-    height: 50px;
-    width: 50px;
-}
 
 /* Untuk Animasi Judul Kuliner Meksiko */
 @keyframes hurufMasuk {
