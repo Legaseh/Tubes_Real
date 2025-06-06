@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.querySelector(".next-btn");
 
   if (cardContainer && prevBtn && nextBtn) {
-    const cardWidth = 320; // Lebar card + gap
+    const cardWidth = 325; // Lebar card + gap
     let scrollPosition = 0;
 
     nextBtn.addEventListener("click", () => {

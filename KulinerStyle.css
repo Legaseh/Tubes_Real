@@ -100,7 +100,7 @@ a{
 
 .card-container {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     padding: 20px;
     overflow-x:visible;
     scroll-snap-type: x mandatory;
@@ -112,9 +112,9 @@ a{
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    scroll-snap-align: start;
+    box-shadow: 9px 20px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    height: 78vh;
 }
 .card:hover {
     transform: translateY(-10px);
@@ -139,6 +139,7 @@ a{
 .card-content h2 {
     color: #f9f9f9;
     margin-bottom: 10px;
+    margin-top: 5px;
     font-family: "Luckiest Guy", cursive;
     font-weight: 100;
     text-shadow: 
@@ -166,15 +167,21 @@ iframe{
 }
 #geser{
     background-color: #93f76f;
-    border: none;
     color: black;
-    padding: 10px 20px;
+    border: none;
+    padding: 10px 15px;
     font-size: 24px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
 }
 
+#geser:hover{
+    background-color: #34b808;
+    color: white;
+    top: 4px;
+    box-shadow: 0 0px 0 #2c9607;
+}
 .nav-btn:hover {
     background-color: #7ed55d;
 }
@@ -186,15 +193,7 @@ iframe{
     margin-bottom: 10px;
 }
 
-.card {
-    flex: 0 0 300px;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    scroll-snap-align: start;
-    transition: transform 0.5s ease;
-}
+
 .location-link {
     background: #93f76f;
     color: black;
@@ -285,6 +284,9 @@ iframe{
     }
     .navTacoA, .navTacoB {
         display: none;
+    }
+    .judul-animasi{
+        margin-top: 55px;
     }
 }
 /* ------- Kalau jadi hp (Selesai) ------- */
