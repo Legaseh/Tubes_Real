@@ -1,0 +1,594 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+
+/* Root Variables */
+:root {
+    --primary-yellow: rgb(240, 240, 85);
+    --primary-yellow-light: rgba(240, 240, 85, 0.1);
+    --complementary-blue: rgb(85, 85, 240);
+    --golden-orange: rgb(240, 180, 85);
+    --yellow-green: rgb(180, 240, 85);
+    --dark-olive: rgb(74, 74, 42);
+    --sage-gray: rgb(196, 196, 160);
+    --cream: rgb(255, 249, 196);
+    --gold: rgb(212, 175, 55);
+    --orange-accent: rgb(255, 140, 0);
+    --olive-drab: rgb(107, 142, 35);
+    --white: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.15);
+    --shadow-hover: rgba(0, 0, 0, 0.25);
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--cream) 100%);
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* Typography */
+h1 {
+    font-family: "Fredoka", cursive;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 
+        -3px -3px 0 var(--dark-olive),  
+         3px -3px 0 var(--dark-olive),
+        -3px  3px 0 var(--dark-olive),
+         3px  3px 0 var(--dark-olive),
+         0px  0px 20px rgba(0,0,0,0.5);
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-family: "Fredoka", cursive;
+    font-weight: 600;
+    color: var(--dark-olive);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-olive);
+    transition: all 0.3s ease;
+}
+
+.judul-animasi {
+    margin-top: 150px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.judul-animasiMeksiko {
+    animation: fadeInUp 1s ease-out 0.3s backwards;
+    background: linear-gradient(45deg, var(--golden-orange), var(--orange-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hilangin {
+    color: transparent;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(/Gambar/backgroundtacos.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(240, 240, 85, 0.1) 0%, 
+        rgba(240, 180, 85, 0.1) 50%, 
+        rgba(255, 140, 0, 0.1) 100%);
+}
+
+.header > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Navigation */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.listNav {
+    background: transparent;
+    border-radius: 25px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+
+.nav ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav ul li {
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--yellow-green), var(--primary-yellow));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.nav ul li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, var(--golden-orange), var(--orange-accent));
+}
+
+.nav ul li a {
+    color: var(--dark-olive);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.nav ul .listIlang {
+    background: transparent;
+    box-shadow: none;
+}
+
+.nav ul .listIlang:hover {
+    transform: none;
+    background: transparent;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-yellow);
+}
+
+.navTacoA, .navTacoB {
+    background: linear-gradient(135deg, var(--golden-orange), var(--orange-accent));
+    color: transparent;
+    height: 15px;
+    width: 100%;
+}
+
+.navTacoA {
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+}
+
+.navTacoB {
+    border-bottom-left-radius: 50% 100%;
+    border-bottom-right-radius: 50% 100%;
+}
+
+/* Main Content */
+.main {
+    background: linear-gradient(135deg, var(--cream) 0%, var(--primary-yellow) 100%);
+    padding: 3rem 1rem;
+    min-height: 100vh;
+}
+
+.kata_kata {
+    text-align: center;
+    margin: 2rem auto 3rem;
+    max-width: 800px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.kata_kata h2 {
+    color: var(--dark-olive);
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--dark-olive), var(--olive-drab));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.kata_kata p {
+    font-size: 1.2rem;
+    color: var(--dark-olive);
+    font-weight: 400;
+}
+
+/* Card Styles */
+.card-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.card-container::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    flex: 0 0 350px;
+    background: var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    height: auto;
+    min-height: 500px;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(240, 240, 85, 0.05) 0%, 
+        rgba(240, 180, 85, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 25px;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.card-content h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-family: "Fredoka", cursive;
+    font-weight: 600;
+    text-shadow: 
+        -2px -2px 0 var(--dark-olive),  
+         2px -2px 0 var(--dark-olive),
+        -2px  2px 0 var(--dark-olive),
+         2px  2px 0 var(--dark-olive);
+    font-size: 1.8rem;
+    background: linear-gradient(45deg, var(--golden-orange), var(--orange-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+}
+
+.card-content h3 {
+    color: var(--sage-gray);
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.card-content p {
+    color: var(--dark-olive);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Navigation Buttons */
+#geser {
+    background: linear-gradient(135deg, var(--yellow-green), var(--primary-yellow));
+    color: var(--dark-olive);
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+#geser:hover {
+    background: linear-gradient(135deg, var(--golden-orange), var(--orange-accent));
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+#geser:active {
+    transform: translateY(0);
+}
+
+.card-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    margin: 2rem 0;
+}
+
+.location-link {
+    background: linear-gradient(135deg, var(--yellow-green), var(--primary-yellow));
+    color: var(--dark-olive);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.location-link:hover {
+    background: linear-gradient(135deg, var(--golden-orange), var(--orange-accent));
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* 3D Model */
+.taco3d {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, var(--dark-olive), var(--olive-drab));
+    padding: 3rem 1rem;
+    color: var(--white);
+    text-align: center;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hurufMasuk {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.judul-animasi span {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(-30px);
+    animation: hurufMasuk 0.5s forwards;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .header {
+        height: 70vh;
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: clamp(2rem, 6vw, 4rem);
+    }
+    
+    .nav {
+        display: block;
+        position: fixed;
+        right: -280px;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        transition: right 0.4s ease-in-out;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    }
+    
+    .nav.active {
+        right: 0;
+    }
+    
+    .nav ul.listNav {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 80px 20px 20px;
+        gap: 1.5rem;
+    }
+    
+    .nav ul li {
+        width: 100%;
+        height: auto;
+        padding: 1.2rem;
+        background: linear-gradient(135deg, var(--yellow-green), var(--primary-yellow));
+        border-radius: 15px;
+    }
+    
+    .nav ul .listIlang {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 1000;
+        background: linear-gradient(135deg, var(--yellow-green), var(--primary-yellow));
+        padding: 1rem;
+        border-radius: 15px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .menu-toggle:hover {
+        transform: scale(1.1);
+        background: linear-gradient(135deg, var(--golden-orange), var(--orange-accent));
+    }
+    
+    .menu-toggle span {
+        color: var(--dark-olive);
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    
+    .navTacoA, .navTacoB {
+        display: none;
+    }
+    
+    .judul-animasi {
+        margin-top: 2rem;
+    }
+    
+    .main {
+        padding: 2rem 1rem;
+    }
+    
+    .kata_kata {
+        margin: 1rem auto 2rem;
+        padding: 1.5rem;
+    }
+    
+    .kata_kata p {
+        font-size: 1rem;
+    }
+    
+    .card-container {
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .card {
+        flex: 0 0 280px;
+        min-height: 450px;
+    }
+    
+    .card-content {
+        padding: 1.5rem;
+    }
+    
+    .card-navigation {
+        padding: 0 1rem;
+    }
+    
+    #geser {
+        padding: 0.8rem 1.2rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        flex: 0 0 250px;
+        min-height: 420px;
+    }
+    
+    .card-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .kata_kata h2 {
+        font-size: 1.8rem;
+    }
+}

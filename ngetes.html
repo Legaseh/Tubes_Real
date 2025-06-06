@@ -3,41 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kuliner Meksiko</title>
+    <link href="/Gambar/logo.png" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="KulinerStyle2222.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <script src="KulinerJs.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Fredericka+the+Great&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <script src="https://cdn.lottielab.com/s/lottie-player@1.x/player-web.min.js"></script>
+
 </head>
 <body>
-  <div id="card-container"></div>
-
-  <script src="script.js">
-    document.addEventListener("DOMContentLoaded", function () {
-    fetch("Data_Restoran.json")
-        .then((response) => response.json())
-        .then((Restoran) => {
-        const container = document.getElementById("card-container");
-
-        for (let i = 0; i < Restoran.length; i++) {
-            const data = Restoran[i];
-
-            const card = document.createElement("div");
-            card.className = "card";
-
-            card.innerHTML = `
-            <div class="card-image">
-                <iframe src="${data.iframeSrc}" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="menu-toggle">
+        <span>☰</span>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1 class="judul-animasi">Petualangan &nbsp;&nbsp;Kuliner</h1>
+            <h1 class="judul-animasiMeksiko">Meksiko</h1>
+        </div>
+        <div class="nav" id="navbar">
+            <span class="hilangin">-</span>
+            <ul class="navTacoA">
+                s
+            </ul>
+            <ul class="listNav">
+                <li class="listIlang"><img src="/Gambar/logo.png" alt="Logo" class="logo"></li>
+                <li><a href="">Home</a></li>
+                <li><a href="Food.html">Food</a></li>
+                <li><a href="Resep Rahasiaaaa.html">Resep</a></li>
+                <li><a href="">Games</a></li>
+                <li class="listIlang"><a href=""><model-viewer class="taco3d" id="taco3d_left" src="taco.glb" alt="Model 3D Taco Kiri"></model-viewer></a></li>
+            </ul>
+            <ul class="navTacoB">
+                s
+            </ul>
+        </div>
+        <div class="main">
+            <div class="kata_kata">
+            <h2>
+                Tempat-tempat makan ikonik di Meksiko yang wajib kamu cobain!  
+            </h2>
+            <p style="font-size: 18px; color: #444;">
+                Dari taco panggang, burrito legendaris, sampai tamale hangat—semuanya ada di sini!  
+                Siap buat lidahmu joget? 🤤✨
+            </p>
             </div>
-            <div class="card-content">
-                <h2>${data.title}</h2>
-                <h3>Signature: ${data.signatureDish}</h3>
-                <p>${data.description}</p>
-                <a href="${data.locationLink}" class="location-link" target="_blank">View Location</a>
+            <div class="card-container" id="card-container"></div>
+
+            <!-- Nav Kiri Kanan -->
+            <div class="card-navigation">
+                <button class="prev-btn" id="geser">&lt;</button>
+                <button class="next-btn" id="geser">&gt;</button>
             </div>
-            `;
-
-            container.appendChild(card);
-        }
-        });
-    });
-
-  </script>
+        </div>
+        <div class="footer" id="stopTarget">
+            <!-- ntr dh ya itu wkwkwk berat cuy -->
+            <!-- <lottie-player src="https://cdn.lottielab.com/l/52jaiemmGDX1DH.json" loop autoplay></lottie-player> -->
+        </div>
+    </div>
 </body>
 </html>

@@ -26,9 +26,16 @@ a{
 .judul-animasi{
     margin-top: 150px;
 }
+.hilangin{
+    color: #66666600;
+}
 /* ----- text text kayak h1-6, p, span dll (Selesai) ----- */
 
-
+.kata_kata{
+    text-align: center;
+    margin: 20px 0px;
+    color: rgb(74, 74, 42);
+}
 .logo{
     width: 40px;
     height: 40px;
