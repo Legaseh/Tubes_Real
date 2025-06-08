@@ -1,7 +1,7 @@
 body{
-    background-color: rgb(240, 240, 85);
+    background-color: #fdf6e3;
     margin: 0px;
-    font-family: "Roboto", cursive;
+    font-family: "Playfair Display", serif;
 }
 .menu-toggle{
     display: none;
@@ -10,26 +10,38 @@ body{
 
 /* ----- text text kayak h1-6, p, span dll ----- */
 h1{
-    font-family: "Luckiest Guy", cursive;
+    font-family: "Playfair Display", serif;
     font-weight: 100;
-    text-shadow: 
-        -1px -19px 0 #000,  
-         5px -5px 0 #000,
-        -5px  5px 0 #ad1e1e,
-         5px  5px 0 #000;
     font-size: 100px;
+    color: #fdf6e3;
+    text-shadow: 9px 2px 4px rgba(0, 0, 0, 0.3);
+}
+h2{
+    font-family: "Libre Baskerville", serif;
+    color: #d9664a;
 }
 a{
     text-decoration: none;
     color: black;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-size: 20px;
 }
+.Aztec{
+    font-family: "Libre Baskerville", serif;
+    color: #d9664a;
+    padding-left: 10px;
+    font-weight: 900;
+}
+/* ----- text text kayak h1-6, p, span dll (Selesai) ----- */
 .judul-animasi{
-    margin-top: 150px;
+    margin-top: 190px;
+}
+.judul-animasiMeksiko{
+    margin-top: 15px;
 }
 .hilangin{
     color: #66666600;
 }
-/* ----- text text kayak h1-6, p, span dll (Selesai) ----- */
 
 .kata_kata{
     text-align: center;
@@ -37,8 +49,8 @@ a{
     color: rgb(74, 74, 42);
 }
 .logo{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 .container{
     display: flex;
@@ -48,59 +60,44 @@ a{
     background-image: url(/Gambar/backgroundtacos.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
-    color: white;
-    font-size: large;
+    height: 100vh;
     text-align: center;
 }
 .nav{
     position: sticky;
     top: 0;
     z-index: 999;
-    margin: auto;
-}
-.listNav{
-    background-color: rgba(255, 235, 205, 0);
-    border-radius: 5px;
-    background-color: #eb393000;
-    width: 412px;
+    background-color: #fdf6e3;
+    height: 10vh;
+    padding: 0px 30px 0px 55px;
 }
 .nav ul {
     display: flex;
     list-style-type: none;
     padding: 0px;
     gap: 15px;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     margin: 0;
+    height: 10vh;
 }
 .nav ul li {
     padding: 5px;
-    border-radius: 5px;
-    background-color: #93f76f;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 20px;
+    width: 75px;
+    height: 65px;
 }
-.nav ul .listIlang {
-    background-color: #d79a3100;
+.nav ul li a:hover{
+    transform: skew(10deg);
+    letter-spacing: 2px;
 }
-.navTacoA{
-    background-color: rgb(235, 166, 40);
-    color: orange;
-    border-top-left-radius: 50% 100%;
-    border-top-right-radius: 50% 100%;
-}
-.navTacoB{
-    background-color: rgb(235, 166, 40);
-    color: orange;
-    border-bottom-left-radius: 50% 100%;
-    border-bottom-right-radius: 50% 100%;
+.navtengah{
+    display: flex;
 }
 .main{
-    background-color: rgb(240, 240, 85);
+    background-color: #fdf6e3;
     padding: 20px;
     overflow: hidden;
 }
@@ -144,17 +141,13 @@ a{
 }
 
 .card-content h2 {
-    color: #f9f9f9;
+    color: #a3856b;
     margin-bottom: 10px;
     margin-top: 5px;
-    font-family: "Luckiest Guy", cursive;
+    font-family: "Playfair Display", serif;
     font-weight: 100;
-    text-shadow: 
-        -2px -2px 0 #000,  
-         2px -2px 0 #000,
-        -2px  2px 0 #000,
-         2px  2px 0 #000;
     font-size: 30px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card-content h3 {
@@ -215,8 +208,8 @@ iframe{
 
 /* Bagian bukan struktur web */
 .taco3d{
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
 }
 
 .footer{
@@ -250,15 +243,24 @@ iframe{
         width: 412px;
         font-size: 55px;
     }
+    a{
+        color: #af3a3a ;
+        font-family:Georgia, 'Times New Roman', Times, serif ;
+    }
     .nav{
-        display: block;
+        display: flex;
+        flex-direction: column;
         position: fixed;
-        right: -250px;
+        right: -930px;
         top: 0;
-        width: 250px;
+        width: 320px;
         height: 100vh;
-        background-color: rgba(235, 166, 40, 0.95);
-        transition: right 0.3s ease-in-out;
+        background-color: #fdf6e3;
+        transition: right 0.5s ease-in-out;
+    }
+    .navtengah{
+        display: flex;
+        flex-direction: column;
     }
     .nav.active {
         right: 0; 
@@ -270,10 +272,12 @@ iframe{
         padding: 60px 0;
     }
     .nav ul li {
-        width: 80%;
-        height: auto;
+        width: 100vh;
+        height: 15vh;
         margin: 10px auto;
-        background-color: #93f76f;
+        border-bottom: 1px solid grey;
+        font-size: 80px;
+
     }
     .nav ul .listIlang {
         display: none;
@@ -284,16 +288,13 @@ iframe{
         right: 20px;
         top: 20px;
         z-index: 1000;
-        background-color: #93f76f;
+        background-color: #af3a3a;
         padding: 10px;
         border-radius: 5px;
         cursor: pointer;
     }
-    .navTacoA, .navTacoB {
-        display: none;
-    }
     .judul-animasi{
-        margin-top: 55px;
+        margin-top: 65px;
     }
 }
 /* ------- Kalau jadi hp (Selesai) ------- */
