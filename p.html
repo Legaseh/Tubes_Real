@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    .hover-text span {
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .hover-text.forward span {
+      background-color: yellow;
+    }
+
+    .hover-text.backward span {
+      background-color: yellow;
+    }
+
+    .hover-text.forward span {
+      transition-delay: calc(var(--i) * 0.05s);
+    }
+
+    .hover-text.backward span {
+      transition-delay: calc((var(--total) - var(--i)) * 0.05s);
+    }
+  </style>
+</head>
+<body>
+
+  <p class="hover-text" id="dynamicText"></p>
+
+  <script>
+    const text = "Empanadas!";
+    const container = document.getElementById("dynamicText");
+
+    // Generate spans with CSS variable index
+    [...text].forEach((char, i) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.setProperty('--i', i);
+      container.appendChild(span);
+    });
+
+    // Total character count to help with reverse delay
+    container.style.setProperty('--total', text.length);
+
+    let lastX = 0;
+
+    container.addEventListener("mouseenter", (e) => {
+      const currentX = e.clientX;
+      const direction = currentX > lastX ? 'forward' : 'backward';
+
+      container.classList.remove('forward', 'backward');
+      container.classList.add(direction);
+
+      lastX = currentX;
+    });
+
+    container.addEventListener("mousemove", (e) => {
+      lastX = e.clientX;
+    });
+
+    container.addEventListener("mouseleave", () => {
+      container.classList.remove('forward', 'backward');
+    });
+  </script>
+</body>
+</html>
