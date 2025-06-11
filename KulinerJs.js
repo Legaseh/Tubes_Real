@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Fungsi untuk animasi teks header
   function animateText(selector, yOffset, delayMultiplier) {
     const element = document.querySelector(selector);
     if (element) {
