@@ -1,65 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuliner Meksiko</title>
-    <link href="/Gambar/logo.png" rel="icon" type="image/x-icon">
-    <link rel="stylesheet" href="KulinerStyle2222.css">
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-    <script src="KulinerJs.js" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Fredericka+the+Great&family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <script src="https://cdn.lottielab.com/s/lottie-player@1.x/player-web.min.js"></script>
+    <title>Tangkap Taco!</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f8ff;
+    margin: 0;
+}
 
+#game-container {
+    width: 600px;
+    height: 700px;
+    border: 3px solid #333;
+    background-color: #87CEEB; /* Warna langit */
+    position: relative;
+    overflow: hidden; /* Objek akan hilang jika keluar dari area ini */
+    margin-top: 20px;
+}
+
+#player {
+    width: 80px;
+    height: 60px;
+    background-color: #ff4500; /* Warna pemain (bisa diganti gambar) */
+    position: absolute;
+    bottom: 10px;
+    left: 260px; /* Posisi awal di tengah */
+    border-radius: 10px;
+}
+
+/* Ini adalah kelas untuk objek yang jatuh */
+.taco {
+    width: 50px;
+    height: 40px;
+    background-color: #FFD700; /* Warna Taco */
+    position: absolute;
+    border-radius: 50% 50% 10px 10px;
+}
+
+.bomb {
+    width: 45px;
+    height: 45px;
+    background-color: #2f2f2f; /* Warna Bom */
+    position: absolute;
+    border-radius: 50%;
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#game-over button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+    </style>
 </head>
 <body>
-    <div class="menu-toggle">
-        <span>☰</span>
-    </div>
-    <div class="container">
-        <div class="header">
-            <h1 class="judul-animasi">Petualangan &nbsp;&nbsp;Kuliner</h1>
-            <h1 class="judul-animasiMeksiko">Meksiko</h1>
-        </div>
-        <div class="nav" id="navbar">
-            <span class="hilangin">-</span>
-            <ul class="navTacoA">
-                s
-            </ul>
-            <ul class="listNav">
-                <li class="listIlang"><img src="/Gambar/logo.png" alt="Logo" class="logo"></li>
-                <li><a href="">Home</a></li>
-                <li><a href="Food.html">Food</a></li>
-                <li><a href="Resep Rahasiaaaa.html">Resep</a></li>
-                <li><a href="">Games</a></li>
-                <li class="listIlang"><a href=""><model-viewer class="taco3d" id="taco3d_left" src="taco.glb" alt="Model 3D Taco Kiri"></model-viewer></a></li>
-            </ul>
-            <ul class="navTacoB">
-                s
-            </ul>
-        </div>
-        <div class="main">
-            <div class="kata_kata">
-            <h2>
-                Tempat-tempat makan ikonik di Meksiko yang wajib kamu cobain!  
-            </h2>
-            <p style="font-size: 18px; color: #444;">
-                Dari taco panggang, burrito legendaris, sampai tamale hangat—semuanya ada di sini!  
-                Siap buat lidahmu joget? 🤤✨
-            </p>
-            </div>
-            <div class="card-container" id="card-container"></div>
 
-            <!-- Nav Kiri Kanan -->
-            <div class="card-navigation">
-                <button class="prev-btn" id="geser">&lt;</button>
-                <button class="next-btn" id="geser">&gt;</button>
-            </div>
-        </div>
-        <div class="footer" id="stopTarget">
-            <!-- ntr dh ya itu wkwkwk berat cuy -->
-            <!-- <lottie-player src="https://cdn.lottielab.com/l/52jaiemmGDX1DH.json" loop autoplay></lottie-player> -->
+    <h1>Tangkap Taco!</h1>
+    <p>Gunakan tombol panah ◀ dan ▶ untuk bergerak.</p>
+
+    <div id="game-container">
+        <div id="player"></div>
+        <div id="score">Skor: 0</div>
+        <div id="game-over" class="hidden">
+            <h2>GAME OVER</h2>
+            <p>Skor Akhir: <span id="final-score">0</span></p>
+            <button onclick="location.reload()">Main Lagi</button>
         </div>
     </div>
+
+    <script src="game.js">
+      
+    </script>
+
 </body>
 </html>

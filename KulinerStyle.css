@@ -67,12 +67,13 @@ a{
     text-align: center;
 }
 .nav{
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 999;
-    background:linear-gradient(180deg,D84315,#fdf6e3);
-    height: 10vh;
-    padding: 0px 30px 0px 55px;
+    left: 0;
+    width: 100%;
+    background-color: #D84315;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 .nav ul {
     display: flex;

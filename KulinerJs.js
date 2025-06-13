@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Fungsi untuk animasi teks header
   function animateText(selector, yOffset, delayMultiplier) {
     const element = document.querySelector(selector);
     if (element) {
@@ -20,9 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   animateText(".judul-animasi", -30, 0.1);
   animateText(".judul-animasiMeksiko", 30, 0.3);
 
-  // Toggle menu navigasi
+  // Toggle menu navigasi jadi hp
   const menuToggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav"); // Pastikan ini adalah .nav yang benar, bukan #navbar jika Anda mengubahnya
+  const nav = document.querySelector(".nav"); 
 
   if (menuToggle && nav) {
     menuToggle.addEventListener("click", () => {
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Navigasi card (slider)
+  // Navigasi card (slider) pencetan kiri kanan
   const cardContainer = document.querySelector(".card-container");
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
@@ -57,8 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Fetch dan tampilkan data restoran
-  const containerCard = document.getElementById("card-container"); // Ini sama dengan .card-container di atas, pastikan selector konsisten
-  if (containerCard) { // Periksa apakah elemen ada
+  const containerCard = document.getElementById("card-container"); 
+  if (containerCard) {
     fetch("Data_Restoran.json")
       .then((response) => {
         if (!response.ok) {
@@ -67,9 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return response.json();
       })
       .then((restoranData) => {
-        // Pastikan restoranData adalah array
         if (Array.isArray(restoranData)) {
-          restoranData.forEach((data) => { // Menggunakan forEach lebih modern
+          restoranData.forEach((data) => {
             const card = document.createElement("div");
             card.className = "card";
 
