@@ -45,3 +45,62 @@ h1{
     border: 1px solid black;
     border-radius: 20px;
 }
+
+
+/* Buat Game */
+.taco {
+    position: absolute; 
+    top: 0px;
+    left: 100px; 
+    width: 50px;
+    height: 50px;
+    display: none;
+}
+.bom {
+    position: absolute; 
+    top: 0px;
+    left: 100px; 
+    width: 50px;
+    height: 50px;
+    display: none;
+}
+
+
+.player {
+    width: 70px;
+    height: 40px;
+    position: absolute;
+    bottom: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.container_game{
+    display: flex;
+    flex-direction: column; 
+    height: 100vh;
+    align-items: center;
+}
+.tempat_main{
+    background-color: rgba(134, 129, 129, 0.462);
+    height: 82vh;
+    width: 100vh;
+    border: 1px solid rgb(147, 78, 78);
+}
+img{
+    width: 80px;
+    height: 80px;
+}
+.score{
+    color: white;
+    font-size: 20px;
+}
+.darah{
+    color: white;
+    font-size: 20px;
+}
+.kalah{
+    display: none;
+    text-align: center;
+    margin-top: 20vh;
+}
+

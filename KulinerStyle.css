@@ -1,8 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 body{
     background-color: #fdf6e3;
     margin: 0px;
     font-family: "Playfair Display", serif;
+    
 }
+@font-face {
+    font-family: 'Ombak Inten';
+    src: url('ombak\ inten-Regular..ttf') format('truetype');
+    /* Untuk .woff gunakan:
+       src: url('fonts/OmbakInten.woff') format('woff');
+    */
+    font-weight: normal;
+    font-style: normal;
+  }
 .menu-toggle{
     display: none;
 }
@@ -14,11 +25,12 @@ h1{
     font-weight: 100;
     font-size: 100px;
     color: #fdf6e3;
-    text-shadow: 9px 2px 4px rgba(0, 0, 0, 0.3);
+
 }
 h2{
     font-family: "Libre Baskerville", serif;
-    color: #d9664a;
+       color: brown;
+
 }
 a{
     text-decoration: none;
@@ -45,8 +57,8 @@ a{
 
 .kata_kata{
     text-align: center;
-    margin: 20px 0px;
-    color: rgb(74, 74, 42);
+    font-size: 60px;
+
 }
 .logo{
     width: 50px;
@@ -57,47 +69,81 @@ a{
     flex-direction: column;
 }
 .header{
-    background-image: url(Gambar/delicious-traditional-tacos-arrangement.jpg);
+    background-image: url(/Gambar/tacoopacity50.png) ;
+    background-color: black;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     text-align: center;
+
 }
-.nav{
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background-color: #fdf6e3;
-    height: 10vh;
-    padding: 0px 30px 0px 55px;
+.header h1{
+    text-shadow: 9px 2px 4px rgba(0, 0, 0, 0.3);
+    
 }
-.nav ul {
-    display: flex;
-    list-style-type: none;
-    padding: 0px;
-    gap: 15px;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-    height: 10vh;
-}
-.nav ul li {
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 75px;
-    height: 65px;
-}
-.nav ul li a:hover{
-    transform: skew(10deg);
-    letter-spacing: 2px;
-}
-.navtengah{
-    display: flex;
-}
+/* ==== NAVBAR STYLES ==== */
+    .nav {
+    font-family: 'Montserrat', sans-serif;
+     position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #D84315;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      padding-top: 0px;
+    }
+
+    .listNav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      margin: 0px;
+      
+
+    }
+
+    .navkiri, .navtengah, .navkanan {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .navtengah li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition:  0.3s;
+      font-size: 25px;
+
+    }
+
+    .navtengah li a:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .Aztec {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+
+    model-viewer {
+      width: 60px;
+      height: 60px;
+    }
+
 .main{
-    background-color: #fdf6e3;
+    background: linear-gradient(180deg,#fdf6e3,#D84315);
     padding: 20px;
     overflow: hidden;
 }
@@ -182,6 +228,8 @@ iframe{
     top: 4px;
     box-shadow: 0 0px 0 #2c9607;
 }
+
+
 .nav-btn:hover {
     background-color: #7ed55d;
 }
@@ -212,13 +260,41 @@ iframe{
     width: 70px;
 }
 
-.footer{
-    background-color: purple;
-    padding: 20px;
-    color: white;
+.footer {
+    background: linear-gradient(#D84315, #ffb389 );
+    color: black;
+    padding: 20px 0;
     text-align: center;
+    position: relative;padding: 20px;
+    font-family: 'Montserrat', sans-serif;
 }
-
+.footer h1 {
+    font-size: 60px;
+    margin: 0;
+    color: black;
+    font-weight: 700;
+    font-family: 'Ombak Inten', sans-serif;
+}
+.social-links {
+    margin: 10px 0;
+}
+.social-links a {
+    margin: 0 10px;
+    color: black;
+    text-decoration: none;
+}
+.footer-links {
+    margin: 20px 0;
+}
+.footer-links a {
+    margin: 0 15px;
+    color: black;
+    text-decoration: none;
+}
+.footer .copyright {
+    margin-top: 20px;
+    font-size: 14px;
+}
 
 /* Untuk Animasi Judul Kuliner Meksiko */
 @keyframes hurufMasuk {

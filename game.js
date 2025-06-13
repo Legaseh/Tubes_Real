@@ -43,8 +43,8 @@ function createFallingObject() {
 
     const newObject = document.createElement('div');
     
-    // 75% kemungkinan Taco, 25% kemungkinan Bom
-    if (Math.random() < 0.75) {
+    // 55% kemungkinan Taco, 25% kemungkinan Bom
+    if (Math.random() < 0.55) {
         newObject.classList.add('taco');
     } else {
         newObject.classList.add('bomb');
