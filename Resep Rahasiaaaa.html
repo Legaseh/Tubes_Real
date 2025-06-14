@@ -1,722 +1,1045 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Resep Masakan Meksiko</title>
-  <link href="KulinerStyle.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Food Recipes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      font-family: sans-serif;
-      background-color: #fffaf0;
       margin: 0;
-      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f1f2f;
+      color: #f5f5f5;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    button {
+      font-family: inherit;
     }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      padding: 40px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .judul {
+    header {
+      background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d36075ff-f925-4d0a-a34a-53e7a56cf3a1.png') center/cover no-repeat;
+      position: relative;
+      color: #f5f5f5;
       text-align: center;
-      grid-column: 1 / -1;
-      font-family: 'Fredericka the Great', cursive;
-      color: #c0392b;
-      margin-bottom: 30px;
+      padding: 3rem 1rem 6rem;
+      clip-path: ellipse(100% 80% at 50% 20%);
     }
-
-    .resep {
-      background-color: #fff;
-      border: 2px solid #e0e0e0;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 31, 47, 0.75);
+      pointer-events: none;
+      clip-path: ellipse(100% 80% at 50% 20%);
     }
-
-    .resep h2 {
-      margin-top: 10px;
-      color: #2c3e50;
+    .header-content {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
     }
-
-    .resep h3 {
-      margin-bottom: 5px;
-      color: #8e44ad;
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #f0eae1;
+      user-select: none;
     }
-
-    ul, ol {
-      margin-top: 0;
-      padding-left: 20px;
+    .logo span {
+      font-weight: 400;
+      font-size: 0.8rem;
+      display: block;
+      margin-top: -4px;
+      opacity: 0.7;
+      letter-spacing: 0.12em;
     }
-
-    .gambar-resep {
+    nav {
+      display: flex;
+      gap: 2rem;
+      font-weight: 500;
+      font-size: 1rem;
+      user-select: none;
+    }
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #97b0b9;
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
       width: 100%;
-      height: 180px;
+      height: 2px;
+      background: #97b0b9;
+      border-radius: 2px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin: 0;
+    }
+    p.subtitle {
+      font-size: 1.1rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+    .btn-primary {
+      background-color: transparent;
+      border: 2px solid #566e7f;
+      border-radius: 6px;
+      color: #97b0b9;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      user-select: none;
+      margin-top: 1rem;
+      letter-spacing: 0.03em;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #97b0b9;
+      color: #0f1f2f;
+      border-color: #97b0b9;
+      outline: none;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1440px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+      flex-grow: 1;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #c6d1d9;
+    }
+
+    .recipes-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .recipe-card {
+      background-color: #1c2b3a;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgb(0 0 0 / 0.3);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .recipe-card:hover,
+    .recipe-card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgb(0 0 0 / 0.5);
+      outline: none;
+    }
+    .recipe-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .recipe-content {
+      padding: 1rem 1.25rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .recipe-title {
+      font-family: 'Playfair Display', serif;
+      font-weight:bolder;
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+      color: #dbe9f4;
+      user-select: none;
+      text-align: center;
+    }
+    .recipe-description {
+      font-size: 0.9rem;
+      color: #a3b1bf;
+      user-select: none;
+    }
+
+    footer {
+      background-color: #102533;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      color: #6a7a8a;
+      user-select: none;
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: #f5f5f5;
+      cursor: pointer;
+      font-size: 2.4rem;
+      z-index: 20;
+    }
+    nav.mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+      background-color: #0f1f2f;
+      position: fixed;
+      inset: 0;
+      padding: 6rem 2rem 2rem;
+      z-index: 15;
+      overflow-y: auto;
+      user-select: none;
+    }
+    nav.mobile-nav.show {
+      display: flex;
+    }
+    nav.mobile-nav a {
+      font-size: 1.4rem;
+      color: #97b0b9;
+      font-weight: 600;
+      border-bottom: 1px solid #2a4757;
+      padding-bottom: 0.5rem;
+    }
+
+    .btn {
+      background-color: rgb(118, 125, 161); 
+      padding: 15px 30px;
+      color: white;
+      border-radius: 12px; 
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+      border: 2px solid #566e7f;
+      padding: 0.75rem 2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background-color: #15dae8; /* Warna tombol saat hover */
+    }
+
+    /* Media Queries */
+    @media (max-width: 767px) {
+      /* Mobile */
+      header {
+        padding: 2rem 1rem 5rem;
+        clip-path: ellipse(100% 90% at 50% 30%);
+      }
+      .mobile-nav-toggle {
+        display: block;
+      }
+      nav.desktop-nav {
+        display: none;
+      }
+    }
+    @media (min-width: 768px) {
+      /* Desktop layout */
+      nav.mobile-nav {
+        display: none !important;
+      }
+      nav.desktop-nav {
+        display: flex;
+      }
+    }
+    @media (min-width: 1440px) {
+      main {
+        padding: 0 3rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1 class="judul">Resep Masakan Meksiko</h1>
-
-    <!-- 1. Taco -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.taco.jpg" alt="Taco" class="gambar-resep">
-    <h2>Taco</h2>
-
-    <h3>Bahan</h3>
-    <ul>
-        <li>300 gram daging sapi cincang</li>
-        <li>1/2 bawang bombay, cincang halus</li>
-        <li>2 siung bawang putih, cincang</li>
-        <li>1 sdm minyak goreng</li>
-        <li>1 sdm bubuk cabai (opsional, sesuai selera)</li>
-        <li>1/2 sdt jintan bubuk (jika ada)</li>
-        <li>Kulit taco/Tortilla</li>
-        <li>Selada, iris tipis</li>
-        <li>Tomat, potong dadu</li>
-        <li>Keju parut (cheddar atau mozzarella)</li>
-        <li>Saus salsa (bisa beli atau buat sendiri)</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan</li>
-        <li>Spatula atau sendok kayu</li>
-        <li>Talenan</li>
-        <li>Pisau tajam</li>
-        <li>Mangkuk saji</li>
-        <li>Kompor</li>
-        <li>Piring saji</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Panaskan minyak dalam wajan di atas kompor.</li>
-        <li>Tumis bawang bombay dan bawang putih hingga harum.</li>
-        <li>Masukkan daging sapi cincang, masak hingga berubah warna.</li>
-        <li>Tambahkan bubuk cabai, jintan, garam, dan merica. Aduk rata dan masak hingga daging matang dan airnya menyusut.</li>
-        <li>Panaskan kulit taco di atas teflon atau oven selama beberapa menit agar lebih renyah dan hangat.</li>
-        <li>Ambil kulit taco, isi dengan daging sapi tumis.</li>
-        <li>Tambahkan selada, tomat, keju parut, dan pelengkap lainnya sesuai selera.</li>
-        <li>Sajikan segera selagi hangat. Bisa ditambahkan perasan jeruk nipis untuk cita rasa segar.</li>
-    </ol>
+<header role="banner">
+  <div class="header-content">
+    <div class="logo" aria-label="Website logo and slogan">
+      <div>Aztec Cantina</div>
+      <span>Hanya cinta dan malam yang tak akan pernah habis</span>
     </div>
 
-    <!-- 2. Burrito -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.burrito.jpg" alt="Burrito" class="gambar-resep">
-    <h2>Burrito</h2>
+    <button aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu" class="mobile-nav-toggle">
+      <span class="material-icons">menu</span>
+    </button>
 
-    <h3>Bahan</h3>
-    <ul>
-        <li>300 gram daging sapi cincang</li>
-        <li>1/2 bawang bombay, cincang halus</li>
-        <li>2 siung bawang putih, cincang</li>
-        <li>1 sdm minyak goreng</li>
-        <li>1 sdm bubuk cabai (opsional)</li>
-        <li>1/2 sdt jintan bubuk</li>
-        <li>Garam dan merica secukupnya</li>
-        <li>1 cangkir nasi putih matang</li>
-        <li>1/2 cangkir jagung manis</li>
-        <li>1/2 cangkir kacang merah (kalengan atau rebus sendiri)</li>
-        <li>1/2 sdt paprika bubuk atau cabai bubuk</li>
-        <li>Tortilla besar (burrito wrap)</li>
-        <li>Selada, iris tipis</li>
-        <li>Tomat, potong dadu</li>
-        <li>Keju parut</li>
-        <li>Saus salsa atau saus tomat pedas</li>
-        <li>Alpukat atau guacamole (opsional)</li>
-    </ul>
+    <nav class="desktop-nav" role="navigation" aria-label="Primary navigation">
+      <a href="#" class="active" tabindex="0" aria-current="page">Home</a>
+      <a href="#" tabindex="0">Recipes</a>
+      <a href="#" tabindex="0">Contact</a>
+    </nav>
 
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan</li>
-        <li>Spatula atau sendok kayu</li>
-        <li>Talenan</li>
-        <li>Pisau tajam</li>
-        <li>Mangkuk saji</li>
-        <li>Kompor</li>
-        <li>sendok</li>
-        <li>Piring saji</li>
-    </ul>
+    <nav id="mobile-menu" class="mobile-nav" role="navigation" aria-label="Mobile navigation">
+      <a href="#" tabindex="0">Home</a>
+      <a href="#" tabindex="0">Recipes</a>
+      <a href="#" tabindex="0">Contact</a>
+    </nav>
 
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Panaskan minyak di wajan, tumis bawang bombay dan bawang putih hingga harum.</li>
-        <li>Tambahkan daging sapi cincang, masak hingga berubah warna.</li>
-        <li>Tambahkan bubuk cabai, jintan, garam, dan merica. Aduk rata dan masak hingga matang dan tidak berair.</li>
-        <li>Campur nasi matang dengan jagung, kacang merah, paprika bubuk, dan sedikit garam. Aduk rata.</li>
-        <li>Hangatkan tortilla di wajan tanpa minyak selama beberapa detik agar lentur dan mudah dilipat.</li>
-        <li>Di atas tortilla, tata nasi Meksiko, daging tumis, selada, tomat, keju, dan pelengkap lainnya sesuai selera.</li>
-        <li>Lipat bagian bawah tortilla ke atas, lalu gulung dari satu sisi sambil menekan isian agar padat.</li>
-        <li>Burrito siap disajikan. Bisa langsung dimakan atau dipanggang sebentar agar permukaannya renyah.</li>
-    </ol>
-    </div>
-
-    <!-- 3. Enchilada -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.enchilada.jpg" alt="Enchilada" class="gambar-resep">
-    <h2>Enchilada</h2>
-
-    <h3>Bahan</h3>
-    <ul>
-        <li>300 gram daging sapi cincang</li>
-        <li>1/2 bawang bombay, cincang halus</li>
-        <li>2 siung bawang putih, cincang</li>
-        <li>1 sdm minyak goreng</li>
-        <li>Garam dan merica secukupnya</li>
-        <li>1 sdt jintan bubuk (opsional)</li>
-        <li>1/2 sdt bubuk cabai atau paprika bubuk</li>
-        <li>2 sdm minyak goreng</li>
-        <li>2 sdm tepung terigu</li>
-        <li>2 sdm bubuk cabai (atau paprika bubuk jika tidak suka pedas)</li>
-        <li>2 cangkir kaldu ayam atau sapi</li>
-        <li>1 sdm saus tomat atau pasta tomat</li>
-        <li>1/2 sdt oregano kering</li>
-        <li>6 lembar tortilla (ukuran sedang)</li>
-        <li>1 cangkir keju parut (cheddar atau mozzarella)</li>
-        <li>Daun ketumbar cincang (opsional)</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan</li>
-        <li>Talenan dan pisau</li>
-        <li>Mangkuk saji</li>
-        <li>Loyang tahan oven (ukuran sedang)</li>
-        <li>Oven</li>
-        <li>Sendok atau sendok sayur</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Panaskan minyak di wajan.</li>
-        <li>Tumis bawang bombay dan bawang putih hingga harum.</li>
-        <li>Masukkan daging cincang, masak hingga matang dan kering.</li>
-        <li>Bumbui dengan jintan, bubuk cabai, garam, dan merica. Sisihkan.</li>
-        <li>Dalam panci kecil, panaskan minyak.</li>
-        <li>Tambahkan tepung, aduk terus hingga berubah warna (seperti membuat roux).</li>
-        <li>Tambahkan bubuk cabai/paprika dan aduk rata.</li>
-        <li>Tuangkan kaldu sedikit demi sedikit sambil diaduk agar tidak menggumpal.</li>
-        <li>Masukkan saus tomat dan oregano, aduk rata.</li>
-        <li>Masak hingga mengental, koreksi rasa.</li>
-        <li>Panaskan oven ke 180°C (350°F).</li>
-        <li>Oles sedikit saus di dasar loyang.</li>
-        <li>Ambil tortilla, isi dengan daging cincang dan sedikit keju, lalu gulung.</li>
-        <li>Susun gulungan tortilla di loyang dengan bagian lipatan di bawah.</li>
-        <li>Siram semua enchilada dengan saus hingga rata.</li>
-        <li>Taburi sisa keju di atasnya.</li>
-        <li>Panggang selama 15 sampai 20 menit atau sampai keju meleleh dan permukaan agak kecoklatan.</li>
-        <li>Angkat, taburi daun ketumbar dan sajikan dengan krim asam jika suka.</li>
-    </ol>
-    </div>
-
-    <!-- 4. Quesadilla -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.quesadilla.jpg" alt="Quesadilla" class="gambar-resep">
-    <h2>Quesadilla</h2>
-    
-    <h3>Bahan</h3>
-    <ul>
-        <li>200 gram daging sapi cincang</li>
-        <li>1/2 bawang bombay, cincang halus</li>
-        <li>1 siung bawang putih, cincang</li>
-        <li>1 sdm minyak goreng</li>
-        <li>1/2 sdt jintan bubuk (opsional)</li>
-        <li>1/2 sdt bubuk cabai/paprika bubuk</li>
-        <li>Garam dan merica secukupnya</li>
-        <li>4 lembar tortilla ukuran sedang</li>
-        <li>1,5 cangkir keju parut (cheddar, mozzarella, atau campuran)</li>
-        <li>Tomat, iris tipis (opsional)</li>
-        <li>Daun ketumbar atau daun bawang (opsional)</li>
-        <li>Mentega atau margarin (untuk memanggang)</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan</li>
-        <li>Spatula</li>
-        <li>Talenan & pisau</li>
-        <li>Sendok</li>
-        <li>Wajan datar atau teflon lebar (untuk memanggang)</li>
-        <li>Piring saji</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Panaskan minyak di wajan.</li>
-        <li>Tumis bawang bombay dan bawang putih hingga harum.</li>
-        <li>Tambahkan daging sapi cincang, aduk hingga matang dan kering.</li>
-        <li>Bumbui dengan jintan, bubuk cabai/paprika, garam, dan merica. Sisihkan.</li>
-        <li>Panaskan wajan datar atau teflon lebar di atas api sedang.</li>
-        <li>Letakkan 1 lembar tortilla di wajan, taburi separuh permukaannya dengan keju parut.</li>
-        <li>Tambahkan isian daging, tomat, dan daun ketumbar jika pakai.</li>
-        <li>Tambahkan sedikit keju lagi di atas isian agar merekat saat dilipat.</li>
-        <li>Lipat tortilla menjadi setengah lingkaran, tekan sedikit agar menempel.</li>
-        <li>Masak hingga bagian bawah kecoklatan dan keju meleleh (sekitar 2–3 menit), lalu balik dan panggang sisi lainnya.</li>
-        <li>Ulangi untuk tortilla lainnya.</li>
-        <li>Angkat, potong-potong menjadi segitiga.</li>
-        <li>Sajikan hangat dengan saus salsa, guacamole, atau krim asam.</li>
-    </ol>
-    </div>
-
-    <!-- 5. Tamales -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.tamales.jpg" alt="Tamales" class="gambar-resep">
-    <h2>Tamales</h2>
-    
-    <h3>Bahan</h3>
-    <ul>
-        <li>2 cangkir tepung jagung khusus tamales (masa harina)</li>
-        <li>1/2 cangkir mentega putih atau margarin (bisa juga shortening)</li>
-        <li>1/2 sdt baking powder</li>
-        <li>1/2 sdt garam</li>
-        <li>±1,5 cangkir kaldu ayam atau sapi hangat (sesuaikan agar adonan lembut dan mudah dioles)</li>
-        <li>300 gram daging sapi rebus, suwir halus</li>
-        <li>2 siung bawang putih, cincang</li>
-        <li>1/2 bawang bombay, cincang</li>
-        <li>2 buah cabai kering (rendam dan haluskan) atau 1 sdm bubuk cabai</li>
-        <li>1 sdm pasta tomat</li>
-        <li>Garam dan merica secukupnya</li>
-        <li>Sedikit minyak untuk menumis</li>
-        <li>±20 lembar daun jagung kering (corn husks), rendam air panas hingga lentur dan tiriskan</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Mangkuk besar</li>
-        <li>Mixer tangan (jika ada)</li>
-        <li>Wajan</li>
-        <li>Kukusan besar</li>
-        <li>Sendok</li>
-        <li>Talenan dan pisau</li>
-        <li>Mangkuk air (untuk merendam daun)</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Tumis bawang putih dan bawang bombay hingga harum.</li>
-        <li>Masukkan daging suwir, pasta tomat, cabai halus/bubuk, garam, dan merica.</li>
-        <li>Masak hingga bumbu meresap dan sedikit kering. Sisihkan.</li>
-        <li>Kocok mentega putih hingga lembut dan mengembang (gunakan mixer atau whisk).</li>
-        <li>Campurkan masa harina, baking powder, dan garam dalam mangkuk.</li>
-        <li>Tuang kaldu sedikit demi sedikit sambil diaduk.</li>
-        <li>Tambahkan mentega yang sudah dikocok, aduk rata hingga adonan lembut dan mudah dioles (tidak terlalu cair atau kering).</li>
-        <li>Ambil selembar daun jagung yang sudah lentur.</li>
-        <li>Oleskan ±2 sdm adonan masa di tengah daun (sepanjang kira-kira 10 cm).</li>
-        <li>Tambahkan 1 sdm isian daging di tengah adonan.</li>
-        <li>Lipat sisi kanan dan kiri daun ke tengah, lalu lipat bagian bawah ke atas (atas biarkan terbuka atau bisa ditutup juga).</li>
-        <li>Ulangi hingga adonan habis.</li>
-        <li>Panaskan kukusan.</li>
-        <li>Susun tamales berdiri (bagian terbuka di atas) dalam kukusan.</li>
-        <li>Kukus selama ±1–1,5 jam, hingga adonan mengeras dan tidak lengket di daun.</li>
-        <li>Tamales siap disajikan hangat. Bisa disantap langsung atau dengan saus salsa, krim asam, atau saus pedas.</li>
-    </ol>
-    </div>
-
-    <!-- 6. Chiles en Nogada -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.chiles.jpg" alt="Chiles en Nogada" class="gambar-resep">
-    <h2>Chiles en Nogada</h2>
-
-    <h3>Bahan</h3>
-    <ul>
-        <li> buah poblano chili (bisa diganti cabai besar hijau yang tidak terlalu pedas)</li>
-        <li>300 gram daging sapi cincang</li>
-        <li>1/2 bawang bombay, cincang</li>
-        <li>2 siung bawang putih, cincang</li>
-        <li>1 buah apel manis (seperti fuji), potong dadu kecil</li>
-        <li>1 buah pir (opsional), potong dadu kecil</li>
-        <li>1 buah pisang raja matang (opsional), potong kecil</li>
-        <li>2 sdm kismis</li>
-        <li>2 sdm kacang almond cincang</li>
-        <li>1 sdm minyak untuk menumis</li>
-        <li>Garam dan merica secukupnya</li>
-        <li>1/2 sdt kayu manis bubuk</li>
-        <li>1/4 sdt cengkeh bubuk (opsional)</li>
-        <li>100 gram kenari kupas, rendam dalam air panas 2 jam</li>
-        <li>1/2 cangkir susu (bisa diganti krim kental)</li>
-        <li>100 gram keju segar</li>
-        <li>1 sdm gula pasir (atau sesuai selera)</li>
-        <li>Sejumput kayu manis (opsional)</li>
-        <li>Biji delima (warna merah cerah)</li>
-        <li>Daun peterseli atau ketumbar segar</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan</li>
-        <li>Blender</li>
-        <li>Talenan dan pisau</li>
-        <li>Sendok</li>
-        <li>Mangkuk saji</li>
-        <li>Kompor</li>
-        <li>Alat pembakar (kompor langsung atau oven, untuk membakar kulit cabai)</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Panggang atau bakar cabai di atas api langsung atau dalam oven hingga kulitnya melepuh dan menghitam.</li>
-        <li>Masukkan cabai ke dalam kantong plastik, diamkan 10 menit, lalu kupas kulitnya.</li>
-        <li>Belah satu sisi memanjang, buang bijinya hati-hati agar tidak sobek.</li>
-        <li>Panaskan minyak, tumis bawang bombay dan bawang putih hingga harum.</li>
-        <li>Masukkan daging cincang, aduk hingga matang.</li>
-        <li>Tambahkan apel, pir, pisang, kismis, kacang almond, dan bumbu (garam, merica, kayu manis, cengkeh).</li>
-        <li>Masak hingga semua bahan matang dan air menyusut. Sisihkan, dinginkan sebentar.</li>
-        <li>Tiriskan kenari, blender bersama susu, keju, gula, garam, dan sedikit kayu manis hingga halus.</li>
-        <li>Sesuaikan kekentalan (boleh tambah sedikit susu jika terlalu kental).</li>
-        <li>Cicipi dan sesuaikan rasa.</li>
-        <li>Isi cabai yang sudah dikupas dengan isian daging.</li>
-        <li>Susun di piring saji.</li>
-        <li>Siram dengan saus nogada hingga menutupi cabai.</li>
-        <li>Taburi biji delima dan daun peterseli/cilantro untuk tampilan warna bendera Meksiko.</li>
-    </ol>
-    </div>
-    
-
-    <!-- 7. Pozole -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.pozole.jpg" alt="Pozole" class="gambar-resep">
-    <h2>Pozole</h2>
-     
-    <h3>Bahan</h3>
-    <ul>
-        <li>500 gram daging babi (bisa juga daging ayam atau sapi, bagian berlemak sedikit)</li>
-        <li>250 gram hominy (jagung putih khusus, bisa beli kalengan atau kering yang sudah direndam semalaman)</li>
-        <li>2 liter air</li>
-        <li>1/2 bawang bombay, belah dua</li>
-        <li>3 siung bawang putih, geprek</li>
-        <li>Garam secukupnya</li>
-        <li>3 buah cabai guajillo kering (bisa diganti cabai merah keriting, direbus lalu haluskan)</li>
-        <li>2 buah cabai ancho (opsional, untuk rasa manis smokey)</li>
-        <li>1 siung bawang putih</li>
-        <li>1/4 bawang bombay</li>
-        <li>1/2 sdt oregano kering</li>
-        <li>1/2 sdt jintan bubuk</li>
-        <li>Garam secukupnya</li>
-        <li>Irisan kubis atau kol segar</li>
-        <li>Lobak merah atau putih, iris tipis</li>
-        <li>Bawang merah mentah, iris halus</li>
-        <li>Daun ketumbar segar, cincang</li>
-        <li>Perasan jeruk nipis</li>
-        <li>Oregano kering</li>
-        <li>Tortilla goreng atau keripik jagung (totopos)</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Panci besar</li>
-        <li>Blender</li>
-        <li>Wajan (untuk menumis bumbu halus)</li>
-        <li>Saringan</li>
-        <li>Pisau dan talenan</li>
-        <li>Mangkuk saji</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Rebus daging bersama bawang bombay, bawang putih, dan sedikit garam dalam 2 liter air.</li>
-        <li>Jika memakai hominy kering, tambahkan saat air masih dingin dan rebus sampai empuk (bisa 1–2 jam).</li>
-        <li>Jika memakai hominy kalengan, masukkan setelah daging hampir empuk.</li>
-        <li>Setelah matang, angkat daging dan potong kecil-kecil. Sisihkan kaldu.</li>
-        <li>Rendam cabai guajillo dan ancho dalam air panas selama 15–20 menit hingga lunak.</li>
-        <li>Blender cabai lunak bersama bawang putih, bawang bombay, oregano, jintan, dan sedikit air rendaman hingga halus.</li>
-        <li>Tumis bumbu halus di wajan dengan sedikit minyak hingga harum dan warnanya lebih pekat.</li>
-        <li>Masukkan bumbu cabai yang sudah ditumis ke dalam kaldu.</li>
-        <li>Masukkan kembali potongan daging dan hominy (jika belum ditambahkan).</li>
-        <li>Rebus semua selama 20–30 menit agar rasa meresap. Koreksi garam.</li>
-        <li>Tuang pozole panas ke dalam mangkuk.</li>
-        <li>Tambahkan topping sesuai selera: kol, lobak, bawang, daun ketumbar, dan perasan jeruk nipis.</li>
-        <li>Sajikan dengan keripik jagung atau tortilla goreng.</li>
-    </ol>
-    </div>
-
-    <!-- 8. Mole -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.mole.jpg" alt="Mole" class="gambar-resep">
-    <h2>Mole (Saus Cokelat)</h2>
-        <h3>Bahan</h3>
-    <ul>
-        <li>2 buah cabai ancho kering</li>
-        <li>2 buah cabai pasilla kering</li>
-        <li>2 buah cabai mulato kering (opsional, tapi otentik)</li>
-        <li>1 buah cabai chipotle kering (opsional untuk rasa smokey dan pedas)</li>
-        <li>2 buah tomat merah matang</li>
-        <li>1/4 cangkir kacang almond atau kacang tanah tanpa garam</li>
-        <li>1/4 cangkir biji wijen sangrai</li>
-        <li>1/4 cangkir kismis</li>
-        <li>1 lembar roti tawar (dipotong kecil)</li>
-        <li>2 buah tortilla jagung (dipotong dan dipanggang kering)</li>
-        <li>1 batang kayu manis kecil atau 1/2 sdt kayu manis bubuk</li>
-        <li>2 butir cengkeh</li>
-        <li>2 siung bawang putih</li>
-        <li>1/2 bawang bombay</li>
-        <li>50 gram dark chocolate (tanpa pemanis lebih baik)</li>
-        <li>2 sdm gula merah atau gula aren</li>
-        <li>2 sdm minyak goreng atau lemak ayam</li>
-        <li>±3–4 cangkir kaldu ayam</li>
-        <li>Garam secukupnya</li>
-        <li>500 gram ayam rebus (dada atau paha)</li>
-        <li>Biji wijen sangrai untuk taburan</li>
-        <li>Nasi putih (opsional)</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan</li>
-        <li>Blender</li>
-        <li>Panci</li>
-        <li>Pisau & talenan</li>
-        <li>Saringan (jika ingin tekstur sangat halus)</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Buka cabai kering, buang biji dan tangkainya.</li>
-        <li>Panggang cabai sebentar di wajan panas tanpa minyak (±10 detik per sisi) hingga harum, jangan sampai gosong.</li>
-        <li>Rendam cabai dalam air panas selama ±15 menit sampai lunak.</li>
-        <li>Panggang tomat, bawang bombay, dan bawang putih sampai sedikit gosong di permukaan (bisa di atas wajan atau oven).</li>
-        <li>Sangrai kacang, biji wijen, dan kismis masing-masing sebentar sampai wangi.</li>
-        <li>Goreng potongan roti dan tortilla sampai keemasan (boleh juga dipanggang tanpa minyak).</li>
-        <li>Masukkan semua bahan panggang + cabai yang sudah lunak ke dalam blender: tomat, cabai, bawang, kacang, kismis, roti, tortilla, rempah, dan sebagian kaldu ayam.</li>
-        <li>Blender hingga sangat halus (gunakan saringan jika ingin tekstur lebih lembut).</li>
-        <li>Panaskan 2 sdm minyak/lemak di panci besar.</li>
-        <li>Tuang bumbu halus dan masak dengan api kecil selama 15–20 menit, aduk terus.</li>
-        <li>Tambahkan cokelat, gula, dan sisa kaldu.</li>
-        <li>Masak perlahan hingga saus mengental dan aromanya keluar (sekitar 30–40 menit).</li>
-        <li>Koreksi rasa dengan garam, dan jika terlalu pahit, tambahkan sedikit gula lagi.</li>
-        <li>Susun ayam rebus di piring, siram dengan saus mole panas.</li>
-        <li>Taburi wijen sangrai di atasnya.</li>
-        <li>Sajikan dengan nasi putih atau tortilla.</li>
-    </ol>
-    </div>
-     
-    <!-- 9. Fajitas -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.fajitas.jpg" alt="Fajitas" class="gambar-resep">
-    <h2>Fajitas</h2>
-    <h3>Bahan</h3>
-    <ul>
-        <li>400 gram daging sapi (flank steak, sirloin, atau has luar), iris tipis memanjang</li>
-        <li>2 sdm air jeruk nipis/lemon</li>
-        <li>2 sdm minyak zaitun</li>
-        <li>2 siung bawang putih, cincang</li>
-        <li>1/2 sdt jintan bubuk</li>
-        <li>1/2 sdt paprika bubuk atau bubuk cabai</li>
-        <li>1/2 sdt oregano kering</li>
-        <li>Garam dan merica secukupnya</li>
-        <li>1 buah paprika merah, iris panjang</li>
-        <li>1 buah paprika hijau, iris panjang</li>
-        <li>1/2 bawang bombay, iris panjang</li>
-        <li>Tortilla gandum atau jagung, hangatkan</li>
-        <li>Salsa (tomat cincang, bawang, cabai, jeruk nipis)</li>
-        <li>Guacamole atau irisan alpukat</li>
-        <li>Krim asam (opsional)</li>
-        <li>Keju parut (opsional)</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan atau grill pan</li>
-        <li>Pisau tajam dan talenan</li>
-        <li>Mangkuk untuk marinasi</li>
-        <li>Spatula</li>
-        <li>Kompor</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Campurkan daging dengan air jeruk, minyak, bawang putih, dan semua bumbu.</li>
-        <li>Diamkan minimal 30 menit (lebih baik 2–4 jam di kulkas untuk rasa maksimal).</li>
-        <li>Panaskan sedikit minyak di wajan.</li>
-        <li>Tumis irisan paprika dan bawang bombay hingga agak layu dan sedikit karamel (sekitar 5–7 menit).</li>
-        <li>Angkat dan sisihkan.</li>
-        <li>Gunakan wajan yang sama, panaskan hingga benar-benar panas.</li>
-        <li>Masak daging dalam beberapa batch agar tidak berair, hingga matang dan agak gosong di tepi (sekitar 2–3 menit per sisi).</li>v
-        <li>Masukkan kembali sayuran ke wajan, aduk bersama daging hingga tercampur dan panas.</li>
-        <li>Sajikan fajitas panas-panas dengan tortilla hangat.</li>
-        <li>Tambahkan topping sesuai selera: salsa, guacamole, krim asam, keju, dll.</li>
-    </ol>
-    </div>
-
-    <!-- 10. Tostada -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.tostadas.jpg" alt="Tostada" class="gambar-resep">
-    <h2>Tostada</h2>
-    <h3>Bahan</h3>
-    <ul>
-        <li>6 lembar tortilla jagung (corn tortilla)</li>
-        <li>Minyak untuk menggoreng</li>
-        <li>1 cangkir kacang hitam atau kacang merah (direbus atau kalengan), haluskan dan tumis sebentar dengan garam</li>
-        <li>200 gram daging ayam suwir / daging sapi cincang matang (bisa juga tanpa daging)</li>
-        <li>1/2 sdt jintan bubuk</li>
-        <li>Garam dan merica secukupnya</li>
-        <li>Selada, iris tipis</li>
-        <li>Tomat, potong dadu kecil</li>
-        <li>Bawang merah, iris tipis</li>
-        <li>Keju parut</li>
-        <li>Alpukat atau guacamole</li>
-        <li>Krim asam atau yogurt tawar</li>
-        <li>Saus salsa (merah atau hijau)</li>
-        <li>Perasan jeruk nipis</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan untuk menggoreng</li>
-        <li>Spatula</li>
-        <li>Pisau & talenan</li>
-        <li>Mangkuk saji</li>
-        <li>Sendok</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Panaskan minyak dalam wajan dengan api sedang.</li>
-        <li>Goreng tortilla satu per satu hingga kering, renyah, dan berwarna keemasan (sekitar 1 menit per sisi).</li>
-        <li>Tiriskan di atas tisu dapur.</li>
-        <li>Tumis kacang halus sebentar hingga hangat dan mudah dioles.</li>
-        <li>Tumis daging suwir/cincang dengan sedikit minyak dan bumbu (jintan, garam, merica), atau gunakan sisa ayam rebus.</li>
-        <li>Ambil 1 lembar tortilla goreng.</li>
-        <li>Oleskan kacang halus sebagai dasar.</li>
-        <li>Tambahkan daging, lalu topping lain seperti selada, tomat, bawang, alpukat, keju, dan krim asam.</li>
-        <li>Percikkan salsa dan perasan jeruk nipis.</li>
-        <li>Sajikan segera agar tortilla tetap renyah.</li>
-    </ol>
-    </div>
-
-    <!-- 11. Elote -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.elote.png" alt="Elote" class="gambar-resep">
-    <h2>Elote</h2>
-    <h3>Bahan</h3>
-    <ul>
-        <li>4 tongkol jagung manis (boleh dengan atau tanpa kulit)</li>
-        <li>4 sdm mayones</li>
-        <li>2 sdm krim asam (bisa diganti dengan yogurt tawar atau tambahan mayones)</li>
-        <li>1/2 cangkir keju cotija</li>
-        <li>1 sdt bubuk cabai (chili powder, atau cabai bubuk lokal sesuai selera)</li>
-        <li>1 sdm perasan jeruk nipis/lemon</li>
-        <li>1/2 sdt garam</li>
-        <li>Daun ketumbar cincang (opsional)</li>
-        <li>Tusuk jagung atau stik es krim (opsional, untuk memegang jagung)</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Pemanggang (grill), kompor, atau wajan datar</li>
-        <li>Kuas atau sendok untuk mengoles saus</li>
-        <li>Mangkuk kecil</li>
-        <li>Piring saji</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Bakar jagung di atas pemanggang atau wajan datar dengan api sedang.</li>
-        <li>Bolak-balik hingga seluruh permukaan agak gosong dan matang sempurna (sekitar 10–15 menit).</li>
-        <li>Di mangkuk kecil, campurkan mayones, krim asam, sedikit garam, dan perasan jeruk nipis.</li>
-        <li>Oles seluruh permukaan jagung panas dengan campuran saus.</li>
-        <li>Taburi keju parut secara merata.</li>
-        <li>Taburkan bubuk cabai sesuai selera (bisa pedas atau ringan).</li>
-        <li>Tambahkan daun ketumbar jika suka.</li>
-        <li>Sajikan segera selagi hangat.</li>
-        <li>Bisa diberi tambahan jeruk nipis sebagai pelengkap.</li>
-    </ol>
-    </div>
-
-    <!-- 12. Guacamole -->
-    <div class="resep">
-    <img src="/Gambar-Food/gambar.guacamole.jpg" alt="Guacamole" class="gambar-resep">
-    <h2>Guacamole</h2>
-    <h3>Bahan</h3>
-    <ul>
-        <li>2 buah alpukat matang (jenis mentega atau hass)</li>
-        <li>1 buah tomat merah kecil, buang biji, cincang halus</li>
-        <li>1/4 bawang bombay atau bawang merah, cincang halus</li>
-        <li>1 siung bawang putih, cincang halus (opsional)</li>
-        <li>1 buah cabai rawit atau cabai merah besar, buang biji dan cincang halus (opsional)</li>
-        <li>2 sdm daun ketumbar segar, cincang (opsional tapi autentik)</li>
-        <li>1–2 sdm air perasan jeruk nipis/lemon</li>
-        <li>Garam secukupnya</li>
-        <li>Merica secukupnya</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Mangkuk</li>
-        <li>Garpu atau ulekan (untuk menghancurkan alpukat)</li>
-        <li>Pisau & talenan</li>
-        <li>Sendok</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Belah alpukat, buang biji dan keruk dagingnya ke dalam mangkuk.</li>
-        <li>Hancurkan dengan garpu sesuai selera (boleh halus atau sedikit kasar untuk tekstur).</li>
-        <li>Masukkan tomat cincang, bawang, bawang putih, dan cabai (jika pakai).</li>
-        <li>Tambahkan daun ketumbar.</li>
-        <li>Tambahkan air perasan jeruk nipis/lemon, garam, dan merica.</li>
-        <li>Aduk rata, koreksi rasa.</li>
-        <li>Sajikan segera dengan tortilla chips, taco, burrito, atau salad.</li>
-    </ol>
-    </div>
-
-    <!-- 13. Nacho -->
-    <div class="resep">
-    <img src="Gambar-Food/gambar.nachos.jpeg" alt="Nacho" class="gambar-resep">
-    <h2>Nacho</h2>
-    <h3>Bahan</h3>
-    <ul>
-        <li>1 bungkus keripik tortilla (nacho chips) siap pakai</li>
-        <li>200 gram daging sapi cincang (bisa juga ayam suwir)</li>
-        <li>1/2 bawang bombay, cincang</li>
-        <li>1 siung bawang putih, cincang</li>
-        <li>1/2 sdt bubuk paprika atau cabai bubuk</li>
-        <li>1/2 sdt jintan bubuk (opsional)</li>
-        <li>Garam dan merica secukupnya</li>
-        <li>1,5 cangkir keju parut (cheddar, mozzarella, atau campuran — pilih yang mudah meleleh)</li>
-        <li>Tomat segar, potong dadu kecil</li>
-        <li>Alpukat atau guacamole</li>
-        <li>Jalapeño iris (boleh acar)</li>
-        <li>Daun ketumbar segar</li>
-        <li>Krim asam atau yogurt tawar</li>
-        <li>Salsa atau saus sambal</li>
-    </ul>
-
-    <h3>Alat</h3>
-    <ul>    
-        <li>Wajan (untuk daging)</li>
-        <li>Loyang atau pinggan tahan oven</li>
-        <li>Oven / air fryer (bisa juga disusun tanpa oven)</li>
-        <li>Pisau & talenan</li>
-        <li>Sendok</li>
-    </ul>
-
-    <h3>Cara Membuat:</h3>
-    <ol>
-        <li>Tumis bawang bombay dan bawang putih hingga harum.</li>
-        <li>Masukkan daging cincang, masak hingga matang dan kering.</li>
-        <li>Bumbui dengan paprika, jintan, garam, dan merica. Sisihkan.</li>
-        <li>Di atas loyang atau pinggan tahan panas, susun tortilla chips secara merata.</li>
-        <li>Taburi daging tumis di atasnya.</li>
-        <li>Taburkan keju parut merata di atas daging dan keripik.</li>
-        <li>Panggang dalam oven suhu 180°C selama ±5–8 menit, atau hingga keju meleleh sempurna.</li>
-        <li>Jika pakai air fryer: panggang 3–5 menit suhu 160–170°C.</li>
-        <li>Jika tanpa oven: bisa susun di atas wajan datar dengan tutup dan panaskan hingga keju leleh.</li>
-        <li>Setelah keluar dari oven, segera tambahkan tomat segar, alpukat/guacamole, jalapeño, daun ketumbar, dan krim asam sesuai selera.</li>
-        <li>Nikmati langsung selagi hangat dan keju masih meleleh!</li>
-    </ol>
+    <h1>Mexico Food Recipes</h1>
+    <p class="subtitle">Simple Recipes, Big Taste and Made with Love, Served with Flavor</p>
+    <div>
+    <button class="btn-primary" type="button"><a href="#resep">View Recipes</a></button>
     </div>
   </div>
+</header>
+
+<main>
+  <div id="resep"></div>
+  <h2 class="section-title">Famous Favorites</h2>
+  <section class="recipes-grid" aria-label="List of food recipe cards with name and image">
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c9419ede-aeaa-431c-a0ea-6dab1d4ba3ef.png" alt="Taco food dish with fillings served on plate" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Taco</h3>
+        <p class="recipe-description">A taco is a traditional Mexican dish consisting of a folded or rolled tortilla filled with various ingredients.</p>
+        <h3>Bahan</h3>
+        <ul>
+          <li>1 bungkus keripik tortilla (nacho chips) siap pakai</li>
+          <li>200 gram daging sapi cincang (bisa juga ayam suwir)</li>
+          <li>1/2 bawang bombay, cincang</li>
+          <li>1 siung bawang putih, cincang</li>
+          <li>1/2 sdt bubuk paprika atau cabai bubuk</li>
+          <li>1/2 sdt jintan bubuk (opsional)</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>1,5 cangkir keju parut (cheddar, mozzarella, atau campuran — pilih yang mudah meleleh)</li>
+          <li>Tomat segar, potong dadu kecil</li>
+          <li>Alpukat atau guacamole</li>
+          <li>Jalapeño iris (boleh acar)</li>
+          <li>Daun ketumbar segar</li>
+          <li>Krim asam atau yogurt tawar</li>
+          <li>Salsa atau saus sambal</li>
+        </ul>
+        <br><br><br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan (untuk daging)</li>
+          <li>Loyang atau pinggan tahan oven</li>
+          <li>Oven / air fryer (bisa juga disusun tanpa oven)</li>
+          <li>Pisau & talenan</li>
+          <li>Sendok</li>
+        </ul>
+        <br><br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Tumis bawang bombay dan bawang putih hingga harum.</li>
+          <li>Masukkan daging cincang, masak hingga matang dan kering.</li>
+          <li>Bumbui dengan paprika, jintan, garam, dan merica. Sisihkan.</li>
+          <li>Di atas loyang atau pinggan tahan panas, susun tortilla chips secara merata.</li>
+          <li>Taburi daging tumis di atasnya.</li>
+          <li>Taburkan keju parut merata di atas daging dan keripik.</li>
+          <li>Panggang dalam oven suhu 180°C selama ±5–8 menit, atau hingga keju meleleh sempurna.</li>
+          <li>Jika pakai air fryer: panggang 3–5 menit suhu 160–170°C.</li>
+          <li>Jika tanpa oven: bisa susun di atas wajan datar dengan tutup dan panaskan hingga keju leleh.</li>
+          <li>Setelah keluar dari oven, segera tambahkan tomat segar, alpukat/guacamole, jalapeño, daun ketumbar, dan krim asam sesuai selera.</li>
+          <li>Nikmati langsung selagi hangat dan keju masih meleleh!</li>
+        </ol>
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <a href="https://youtu.be/eKVKYNFKx54?si=4MpAiLedMqAOKr8m" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/872488a9-c221-4377-8bed-f427a8058fc1.png" alt="Buritto rolled tortilla with fillings wrapped tightly" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Buritto</h3>
+        <p class="recipe-description">Mexican dish made by wrapping a large flour tortilla around fillings like seasoned meat, rice, beans, cheese, and vegetables.</p>
+        <h3>Bahan</h3>
+        <ul>
+          <li>300 gram daging sapi cincang</li>
+          <li>1/2 bawang bombay, cincang halus</li>
+          <li>2 siung bawang putih, cincang</li>
+          <li>1 sdm minyak goreng</li>
+          <li>1 sdm bubuk cabai (opsional)</li>
+          <li>1/2 sdt jintan bubuk</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>1 cangkir nasi putih matang</li>
+          <li>1/2 cangkir jagung manis</li>
+          <li>1/2 cangkir kacang merah (kalengan atau rebus sendiri)</li>
+          <li>1/2 sdt paprika bubuk atau cabai bubuk</li>
+          <li>Tortilla besar (burrito wrap)</li>
+          <li>Selada, iris tipis</li>
+          <li>Tomat, potong dadu</li>
+          <li>Keju parut</li>
+          <li>Saus salsa atau saus tomat pedas</li>
+          <li>Alpukat atau guacamole (opsional)</li>
+        </ul>
+        <br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan</li>
+          <li>Spatula atau sendok kayu</li>
+          <li>Talenan</li>
+          <li>Pisau tajam</li>
+          <li>Mangkuk saji</li>
+          <li>Kompor</li>
+          <li>sendok</li>
+          <li>Piring saji</li>
+        </ul>
+
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Panaskan minyak di wajan, tumis bawang bombay dan bawang putih hingga harum.</li>
+          <li>Tambahkan daging sapi cincang, masak hingga berubah warna.</li>
+          <li>Tambahkan bubuk cabai, jintan, garam, dan merica. Aduk rata dan masak hingga matang dan tidak berair.</li>
+          <li>Campur nasi matang dengan jagung, kacang merah, paprika bubuk, dan sedikit garam. Aduk rata.</li>
+          <li>Hangatkan tortilla di wajan tanpa minyak selama beberapa detik agar lentur dan mudah dilipat.</li>
+          <li>Di atas tortilla, tata nasi Meksiko, daging tumis, selada, tomat, keju, dan pelengkap lainnya sesuai selera.</li>
+          <li>Lipat bagian bawah tortilla ke atas, lalu gulung dari satu sisi sambil menekan isian agar padat.</li>
+          <li>Burrito siap disajikan. Bisa langsung dimakan atau dipanggang sebentar agar permukaannya renyah.</li>
+        </ol>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <a href="https://youtu.be/krkf7ObsTM4?si=zkI2NxTt-ea7gGDr" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/547539fb-18d9-4d79-a9e5-dcd76f4cd165.png" alt="Enchilada dish rolled with sauce and cheese" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Enchilada</h3>
+        <p class="recipe-description">Rolling a tortilla around a filling—usually meat, cheese, or beans. Baked until hot and bubbly.</p>
+        <br>
+        <h3>Bahan</h3>
+        <ul>
+          <li>300 gram daging sapi cincang</li>
+          <li>1/2 bawang bombay, cincang halus</li>
+          <li>2 siung bawang putih, cincang</li>
+          <li>1 sdm minyak goreng</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>1 sdt jintan bubuk (opsional)</li>
+          <li>1/2 sdt bubuk cabai atau paprika bubuk</li>
+          <li>2 sdm minyak goreng</li>
+          <li>2 sdm tepung terigu</li>
+          <li>2 sdm bubuk cabai (atau paprika bubuk jika tidak suka pedas)</li>
+          <li>2 cangkir kaldu ayam atau sapi</li>
+          <li>1 sdm saus tomat atau pasta tomat</li>
+          <li>1/2 sdt oregano kering</li>
+          <li>6 lembar tortilla (ukuran sedang)</li>
+          <li>1 cangkir keju parut (cheddar atau mozzarella)</li>
+          <li>Daun ketumbar cincang (opsional)</li>
+        </ul>
+    
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan</li>
+          <li>Talenan dan pisau</li>
+          <li>Mangkuk saji</li>
+          <li>Loyang tahan oven (ukuran sedang)</li>
+          <li>Oven</li>
+          <li>Sendok atau sendok sayur</li>
+        </ul>
+        <br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Panaskan minyak di wajan.</li>
+          <li>Tumis bawang bombay dan bawang putih hingga harum.</li>
+          <li>Masukkan daging cincang, masak hingga matang dan kering.</li>
+          <li>Bumbui dengan jintan, bubuk cabai, garam, dan merica. Sisihkan.</li>
+          <li>Dalam panci kecil, panaskan minyak.</li>
+          <li>Tambahkan tepung, aduk terus hingga berubah warna (seperti membuat roux).</li>
+          <li>Tambahkan bubuk cabai/paprika dan aduk rata.</li>
+          <li>Tuangkan kaldu sedikit demi sedikit sambil diaduk agar tidak menggumpal.</li>
+          <li>Masukkan saus tomat dan oregano, aduk rata.</li>
+          <li>Masak hingga mengental, koreksi rasa.</li>
+          <li>Panaskan oven ke 180°C (350°F).</li>
+          <li>Oles sedikit saus di dasar loyang.</li>
+          <li>Ambil tortilla, isi dengan daging cincang dan sedikit keju, lalu gulung.</li>
+          <li>Susun gulungan tortilla di loyang dengan bagian lipatan di bawah.</li>
+          <li>Siram semua enchilada dengan saus hingga rata.</li>
+          <li>Taburi sisa keju di atasnya.</li>
+          <li>Panggang selama 15 sampai 20 menit atau sampai keju meleleh dan permukaan agak kecoklatan.</li>
+          <li>Angkat, taburi daun ketumbar dan sajikan dengan krim asam jika suka.</li>
+        </ol>
+        <a href="https://youtu.be/8u2_RmrkD_g?si=7kYzzGDXBQ7YsufX" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f217701-4969-4a86-88a3-361ea5b25af5.png" alt="Quesadilla toasted tortilla with melted cheese" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Quesadilla</h3>
+        <p class="recipe-description">A folded tortilla filled with cheese and other ingredients, toasted until crispy and melted.</p>
+        <br>
+        <h3>Bahan</h3>
+        <ul>
+          <li>200 gram daging sapi cincang</li>
+          <li>1/2 bawang bombay, cincang halus</li>
+          <li>1 siung bawang putih, cincang</li>
+          <li>1 sdm minyak goreng</li>
+          <li>1/2 sdt jintan bubuk (opsional)</li>
+          <li>1/2 sdt bubuk cabai/paprika bubuk</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>4 lembar tortilla ukuran sedang</li>
+          <li>1,5 cangkir keju parut (cheddar, mozzarella, atau campuran)</li>
+          <li>Tomat, iris tipis (opsional)</li>
+          <li>Daun ketumbar atau daun bawang (opsional)</li>
+          <li>Mentega atau margarin (untuk memanggang)</li>
+        </ul>
+        <br><br><br><br><br><br><br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan</li>
+          <li>Spatula</li>
+          <li>Talenan & pisau</li>
+          <li>Sendok</li>
+          <li>Wajan datar atau teflon lebar (untuk memanggang)</li>
+          <li>Piring saji</li>
+        </ul>
+        <br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Panaskan minyak di wajan.</li>
+          <li>Tumis bawang bombay dan bawang putih hingga harum.</li>
+          <li>Tambahkan daging sapi cincang, aduk hingga matang dan kering.</li>
+          <li>Bumbui dengan jintan, bubuk cabai/paprika, garam, dan merica. Sisihkan.</li>
+          <li>Panaskan wajan datar atau teflon lebar di atas api sedang.</li>
+          <li>Letakkan 1 lembar tortilla di wajan, taburi separuh permukaannya dengan keju parut.</li>
+          <li>Tambahkan isian daging, tomat, dan daun ketumbar jika pakai.</li>
+          <li>Tambahkan sedikit keju lagi di atas isian agar merekat saat dilipat.</li>
+          <li>Lipat tortilla menjadi setengah lingkaran, tekan sedikit agar menempel.</li>
+          <li>Masak hingga bagian bawah kecoklatan dan keju meleleh (sekitar 2–3 menit), lalu balik dan panggang sisi lainnya.</li>
+          <li>Ulangi untuk tortilla lainnya.</li>
+          <li>Angkat, potong-potong menjadi segitiga.</li>
+          <li>Sajikan hangat dengan saus salsa, guacamole, atau krim asam.</li>
+        </ol>
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <a href="https://youtu.be/wTYD1dt7omk?si=8ZQXzcZs2NATCscn" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0141127a-49f9-41b8-ba44-58560ee81894.png" alt="Tamales wrapped in cornhusk, steamed savory dish" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Tamales</h3>
+        <p class="recipe-description">Steamed masa dough filled with meat or cheese, wrapped in cornhusk or banana leaf.</p>
+        <br>
+        <h3>Bahan</h3>
+        <ul>
+          <li>2 cangkir tepung jagung khusus tamales (masa harina)</li>
+          <li>1/2 cangkir mentega putih atau margarin (bisa juga shortening)</li>
+          <li>1/2 sdt baking powder</li>
+          <li>1/2 sdt garam</li>
+          <li>±1,5 cangkir kaldu ayam atau sapi hangat (sesuaikan agar adonan lembut dan mudah dioles)</li>
+          <li>300 gram daging sapi rebus, suwir halus</li>
+          <li>2 siung bawang putih, cincang</li>
+          <li>1/2 bawang bombay, cincang</li>
+          <li>2 buah cabai kering (rendam dan haluskan) atau 1 sdm bubuk cabai</li>
+          <li>1 sdm pasta tomat</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>Sedikit minyak untuk menumis</li>
+          <li>±20 lembar daun jagung kering (corn husks), rendam air panas hingga lentur dan tiriskan</li>
+        </ul>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Mangkuk besar</li>
+          <li>Mixer tangan (jika ada)</li>
+          <li>Wajan</li>
+          <li>Kukusan besar</li>
+          <li>Sendok</li>
+          <li>Talenan dan pisau</li>
+          <li>Mangkuk air (untuk merendam daun)</li>
+        </ul>
+        <br><br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Tumis bawang putih dan bawang bombay hingga harum.</li>
+          <li>Masukkan daging suwir, pasta tomat, cabai halus/bubuk, garam, dan merica.</li>
+          <li>Masak hingga bumbu meresap dan sedikit kering. Sisihkan.</li>
+          <li>Kocok mentega putih hingga lembut dan mengembang (gunakan mixer atau whisk).</li>
+          <li>Campurkan masa harina, baking powder, dan garam dalam mangkuk.</li>
+          <li>Tuang kaldu sedikit demi sedikit sambil diaduk.</li>
+          <li>Tambahkan mentega yang sudah dikocok, aduk rata hingga adonan lembut dan mudah dioles (tidak terlalu cair atau kering).</li>
+          <li>Ambil selembar daun jagung yang sudah lentur.</li>
+          <li>Oleskan ±2 sdm adonan masa di tengah daun (sepanjang kira-kira 10 cm).</li>
+          <li>Tambahkan 1 sdm isian daging di tengah adonan.</li>
+          <li>Lipat sisi kanan dan kiri daun ke tengah, lalu lipat bagian bawah ke atas (atas biarkan terbuka atau bisa ditutup juga).</li>
+          <li>Ulangi hingga adonan habis.</li>
+          <li>Panaskan kukusan.</li>
+          <li>Susun tamales berdiri (bagian terbuka di atas) dalam kukusan.</li>
+          <li>Kukus selama ±1–1,5 jam, hingga adonan mengeras dan tidak lengket di daun.</li>
+          <li>Tamales siap disajikan hangat. Bisa disantap langsung atau dengan saus salsa, krim asam, atau saus pedas.</li>
+          </ol>
+          <br><br><br><br><br>
+          <a href="https://youtu.be/36IicNJ5FNc?si=Bim6osWfOfXZ_74H" class="btn">Coba Resep Sekarang</a>
+        </div>
+      </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7c9ae6eb-1db2-4a5f-b972-4fee4cddd341.png" alt="Chiles en Nogada stuffed pepper with creamy walnut sauce" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Chiles en Nogada</h3>
+        <p class="recipe-description">Poblano peppers stuffed with picadillo, covered with walnut sauce and pomegranate seeds.</p>
+        <br>  
+        <h3>Bahan</h3>
+        <ul>
+          <li> buah poblano chili (bisa diganti cabai besar hijau yang tidak terlalu pedas)</li>
+          <li>300 gram daging sapi cincang</li>
+          <li>1/2 bawang bombay, cincang</li>
+          <li>2 siung bawang putih, cincang</li>
+          <li>1 buah apel manis (seperti fuji), potong dadu kecil</li>
+          <li>1 buah pir (opsional), potong dadu kecil</li>
+          <li>1 buah pisang raja matang (opsional), potong kecil</li>
+          <li>2 sdm kismis</li>
+          <li>2 sdm kacang almond cincang</li>
+          <li>1 sdm minyak untuk menumis</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>1/2 sdt kayu manis bubuk</li>
+          <li>1/4 sdt cengkeh bubuk (opsional)</li>
+          <li>100 gram kenari kupas, rendam dalam air panas 2 jam</li>
+          <li>1/2 cangkir susu (bisa diganti krim kental)</li>
+          <li>100 gram keju segar</li>
+          <li>1 sdm gula pasir (atau sesuai selera)</li>
+          <li>Sejumput kayu manis (opsional)</li>
+          <li>Biji delima (warna merah cerah)</li>
+          <li>Daun peterseli atau ketumbar segar</li>
+        </ul>
+        <br><br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan</li>
+          <li>Blender</li>
+          <li>Talenan dan pisau</li>
+          <li>Sendok</li>
+          <li>Mangkuk saji</li>
+          <li>Kompor</li>
+          <li>Alat pembakar (kompor langsung atau oven, untuk membakar kulit cabai)</li>
+        </ul>
+
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Panggang atau bakar cabai di atas api langsung atau dalam oven hingga kulitnya melepuh dan menghitam.</li>
+          <li>Masukkan cabai ke dalam kantong plastik, diamkan 10 menit, lalu kupas kulitnya.</li>
+          <li>Belah satu sisi memanjang, buang bijinya hati-hati agar tidak sobek.</li>
+          <li>Panaskan minyak, tumis bawang bombay dan bawang putih hingga harum.</li>
+          <li>Masukkan daging cincang, aduk hingga matang.</li>
+          <li>Tambahkan apel, pir, pisang, kismis, kacang almond, dan bumbu (garam, merica, kayu manis, cengkeh).</li>
+          <li>Masak hingga semua bahan matang dan air menyusut. Sisihkan, dinginkan sebentar.</li>
+          <li>Tiriskan kenari, blender bersama susu, keju, gula, garam, dan sedikit kayu manis hingga halus.</li>
+          <li>Sesuaikan kekentalan (boleh tambah sedikit susu jika terlalu kental).</li>
+          <li>Cicipi dan sesuaikan rasa.</li>
+          <li>Isi cabai yang sudah dikupas dengan isian daging.</li>
+          <li>Susun di piring saji.</li>
+          <li>Siram dengan saus nogada hingga menutupi cabai.</li>
+          <li>Taburi biji delima dan daun peterseli/cilantro untuk tampilan warna bendera Meksiko.</li>
+        </ol>
+        <br><br><br><br><br><br><br><br><br><br>
+        <a href="https://youtu.be/z-iWVJQbSaI?si=Je1TFOJfUaMNQFoA" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8b01ca9d-c579-4709-873a-f7945eebc8c0.png" alt="Bowl of Pozole soup served with garnish" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Pozole</h3>
+        <p class="recipe-description">Hominy soup with meat, seasoned with chili, garnished with lettuce, radishes and lime.</p>
+        <br>
+        <h3>Bahan</h3>
+        <ul>
+          <li>500 gram daging babi (bisa juga daging ayam atau sapi, bagian berlemak sedikit)</li>
+          <li>250 gram hominy (jagung putih khusus, bisa beli kalengan atau kering yang sudah direndam semalaman)</li>
+          <li>2 liter air</li>
+          <li>1/2 bawang bombay, belah dua</li>
+          <li>3 siung bawang putih, geprek</li>
+          <li>Garam secukupnya</li>
+          <li>3 buah cabai guajillo kering (bisa diganti cabai merah keriting, direbus lalu haluskan)</li>
+          <li>2 buah cabai ancho (opsional, untuk rasa manis smokey)</li>
+          <li>1 siung bawang putih</li>
+          <li>1/4 bawang bombay</li>
+          <li>1/2 sdt oregano kering</li>
+          <li>1/2 sdt jintan bubuk</li>
+          <li>Garam secukupnya</li>
+          <li>Irisan kubis atau kol segar</li>
+          <li>Lobak merah atau putih, iris tipis</li>
+          <li>Bawang merah mentah, iris halus</li>
+          <li>Daun ketumbar segar, cincang</li>
+          <li>Perasan jeruk nipis</li>
+          <li>Oregano kering</li>
+          <li>Tortilla goreng atau keripik jagung (totopos)</li>
+        </ul>
+        <br><br><br><br><br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Panci besar</li>
+          <li>Blender</li>
+          <li>Wajan (untuk menumis bumbu halus)</li>
+          <li>Saringan</li>
+          <li>Pisau dan talenan</li>
+          <li>Mangkuk saji</li>
+        </ul>
+        <br><br><br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Rebus daging bersama bawang bombay, bawang putih, dan sedikit garam dalam 2 liter air.</li>
+          <li>Jika memakai hominy kering, tambahkan saat air masih dingin dan rebus sampai empuk (bisa 1–2 jam).</li>
+          <li>Jika memakai hominy kalengan, masukkan setelah daging hampir empuk.</li>
+          <li>Setelah matang, angkat daging dan potong kecil-kecil. Sisihkan kaldu.</li>
+          <li>Rendam cabai guajillo dan ancho dalam air panas selama 15–20 menit hingga lunak.</li>
+          <li>Blender cabai lunak bersama bawang putih, bawang bombay, oregano, jintan, dan sedikit air rendaman hingga halus.</li>
+          <li>Tumis bumbu halus di wajan dengan sedikit minyak hingga harum dan warnanya lebih pekat.</li>
+          <li>Masukkan bumbu cabai yang sudah ditumis ke dalam kaldu.</li>
+          <li>Masukkan kembali potongan daging dan hominy (jika belum ditambahkan).</li>
+          <li>Rebus semua selama 20–30 menit agar rasa meresap. Koreksi garam.</li>
+          <li>Tuang pozole panas ke dalam mangkuk.</li>
+          <li>Tambahkan topping sesuai selera: kol, lobak, bawang, daun ketumbar, dan perasan jeruk nipis.</li>
+          <li>Sajikan dengan keripik jagung atau tortilla goreng.</li>
+        </ol>
+        <br><br><br><br><br><br><br><br><br><br>
+        <a href="https://youtu.be/Icf1f1laB50?si=s5ZwZ0UFVaJAPjDW" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0ff9910f-f1f7-4217-b0fc-53c732adc5f9.png" alt="Mole sauce poured over meat in a dish" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Mole (sauce)</h3>
+        <p class="recipe-description">Rich and complex sauce made from chili peppers, spices, chocolate, and nuts served over meat.</p>
+        <h3>Bahan</h3>
+        <ul>
+          <li>2 buah cabai ancho kering</li>
+          <li>2 buah cabai pasilla kering</li>
+          <li>2 buah cabai mulato kering (opsional, tapi otentik)</li>
+          <li>1 buah cabai chipotle kering (opsional untuk rasa smokey dan pedas)</li>
+          <li>2 buah tomat merah matang</li>
+          <li>1/4 cangkir kacang almond atau kacang tanah tanpa garam</li>
+          <li>1/4 cangkir biji wijen sangrai</li>
+          <li>1/4 cangkir kismis</li>
+          <li>1 lembar roti tawar (dipotong kecil)</li>
+          <li>2 buah tortilla jagung (dipotong dan dipanggang kering)</li>
+          <li>1 batang kayu manis kecil atau 1/2 sdt kayu manis bubuk</li>
+          <li>2 butir cengkeh</li>
+          <li>2 siung bawang putih</li>
+          <li>1/2 bawang bombay</li>
+          <li>50 gram dark chocolate (tanpa pemanis lebih baik)</li>
+          <li>2 sdm gula merah atau gula aren</li>
+          <li>2 sdm minyak goreng atau lemak ayam</li>
+          <li>±3–4 cangkir kaldu ayam</li>
+          <li>Garam secukupnya</li>
+          <li>500 gram ayam rebus (dada atau paha)</li>
+          <li>Biji wijen sangrai untuk taburan</li>
+          <li>Nasi putih (opsional)</li>
+        </ul>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan</li>
+          <li>Blender</li>
+          <li>Panci</li>
+          <li>Pisau & talenan</li>
+          <li>Saringan (jika ingin tekstur sangat halus)</li>
+        </ul>
+        <br><br><br><br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Buka cabai kering, buang biji dan tangkainya.</li>
+          <li>Panggang cabai sebentar di wajan panas tanpa minyak (±10 detik per sisi) hingga harum, jangan sampai gosong.</li>
+          <li>Rendam cabai dalam air panas selama ±15 menit sampai lunak.</li>
+          <li>Panggang tomat, bawang bombay, dan bawang putih sampai sedikit gosong di permukaan (bisa di atas wajan atau oven).</li>
+          <li>Sangrai kacang, biji wijen, dan kismis masing-masing sebentar sampai wangi.</li>
+          <li>Goreng potongan roti dan tortilla sampai keemasan (boleh juga dipanggang tanpa minyak).</li>
+          <li>Masukkan semua bahan panggang + cabai yang sudah lunak ke dalam blender: tomat, cabai, bawang, kacang, kismis, roti, tortilla, rempah, dan sebagian kaldu ayam.</li>
+          <li>Blender hingga sangat halus (gunakan saringan jika ingin tekstur lebih lembut).</li>
+          <li>Panaskan 2 sdm minyak/lemak di panci besar.</li>
+          <li>Tuang bumbu halus dan masak dengan api kecil selama 15–20 menit, aduk terus.</li>
+          <li>Tambahkan cokelat, gula, dan sisa kaldu.</li>
+          <li>Masak perlahan hingga saus mengental dan aromanya keluar (sekitar 30–40 menit).</li>
+          <li>Koreksi rasa dengan garam, dan jika terlalu pahit, tambahkan sedikit gula lagi.</li>
+          <li>Susun ayam rebus di piring, siram dengan saus mole panas.</li>
+          <li>Taburi wijen sangrai di atasnya.</li>
+          <li>Sajikan dengan nasi putih atau tortilla.</li>
+        </ol>
+        <a href="https://youtu.be/LpRx6YtpWcU?si=C5WRnWkKtafzCyH7" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ed55d73-0146-46b8-9b7d-6aa2ea85a6ff.png" alt="Grilled fajitas with vegetables and tortillas" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Fajitas</h3>
+        <p class="recipe-description">Grilled meat, typically served with sautéed peppers and onions, accompanied by tortillas.</p>
+        <h3>Bahan</h3>
+        <ul>
+          <li>400 gram daging ayam, iris tipis memanjang</li>
+          <li>2 sdm air jeruk nipis/lemon</li>
+          <li>2 sdm minyak zaitun</li>
+          <li>2 siung bawang putih, cincang</li>
+          <li>1/2 sdt jintan bubuk</li>
+          <li>1/2 sdt paprika bubuk atau bubuk cabai</li>
+          <li>1/2 sdt oregano kering</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>1 buah paprika merah, iris panjang</li>
+          <li>1 buah paprika hijau, iris panjang</li>
+          <li>1/2 bawang bombay, iris panjang</li>
+          <li>Tortilla gandum atau jagung, hangatkan</li>
+          <li>Salsa (tomat cincang, bawang, cabai, jeruk nipis)</li>
+          <li>Guacamole atau irisan alpukat</li>
+          <li>Krim asam (opsional)</li>
+          <li>Keju parut (opsional)</li>
+        </ul> 
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan atau grill pan</li>
+          <li>Pisau tajam dan talenan</li>
+          <li>Mangkuk untuk marinasi</li>
+          <li>Spatula</li>
+          <li>Kompor</li>
+        </ul>
+        <br><br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Campurkan daging dengan air jeruk, minyak, bawang putih, dan semua bumbu.</li>
+          <li>Diamkan minimal 30 menit (lebih baik 2–4 jam di kulkas untuk rasa maksimal).</li>
+          <li>Panaskan sedikit minyak di wajan.</li>
+          <li>Tumis irisan paprika dan bawang bombay hingga agak layu dan sedikit karamel (sekitar 5–7 menit).</li>
+          <li>Angkat dan sisihkan.</li>
+          <li>Gunakan wajan yang sama, panaskan hingga benar-benar panas.</li>
+          <li>Masak daging dalam beberapa batch agar tidak berair, hingga matang dan agak gosong di tepi (sekitar 2–3 menit per sisi).</li>v
+          <li>Masukkan kembali sayuran ke wajan, aduk bersama daging hingga tercampur dan panas.</li>
+          <li>Sajikan fajitas panas-panas dengan tortilla hangat.</li>
+          <li>Tambahkan topping sesuai selera: salsa, guacamole, krim asam, keju, dll.</li>
+        </ol>
+        <a href="https://youtu.be/g-LT0igt9lo?si=vQV0A0A1vN8V2M4V" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48451b07-ea6d-457d-b412-fe3d139f5d6a.png" alt="Tostada flat tortilla topped with fresh ingredients" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Tostada</h3>
+        <p class="recipe-description">A crispy fried tortilla topped with beans, meat, lettuce, cheese, and salsa.</p>
+        <h3>Bahan</h3>
+        <ul>
+          <li>6 lembar tortilla jagung (corn tortilla)</li>
+          <li>Minyak untuk menggoreng</li>
+          <li>1 cangkir kacang hitam atau kacang merah (direbus atau kalengan), haluskan dan tumis sebentar dengan garam</li>
+          <li>200 gram daging ayam suwir / daging sapi cincang matang (bisa juga tanpa daging)</li>
+          <li>1/2 sdt jintan bubuk</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>Selada, iris tipis</li>
+          <li>Tomat, potong dadu kecil</li>
+          <li>Bawang merah, iris tipis</li>
+          <li>Keju parut</li>
+          <li>Alpukat atau guacamole</li>
+          <li>Krim asam atau yogurt tawar</li>
+          <li>Saus salsa (merah atau hijau)</li>
+          <li>Perasan jeruk nipis</li>
+        </ul>
+        <br><br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan untuk menggoreng</li>
+          <li>Spatula</li>
+          <li>Pisau & talenan</li>
+          <li>Mangkuk saji</li>
+          <li>Sendok</li>
+        </ul>
+        <br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Panaskan minyak dalam wajan dengan api sedang.</li>
+          <li>Goreng tortilla satu per satu hingga kering, renyah, dan berwarna keemasan (sekitar 1 menit per sisi).</li>
+          <li>Tiriskan di atas tisu dapur.</li>
+          <li>Tumis kacang halus sebentar hingga hangat dan mudah dioles.</li>
+          <li>Tumis daging suwir/cincang dengan sedikit minyak dan bumbu (jintan, garam, merica), atau gunakan sisa ayam rebus.</li>
+          <li>Ambil 1 lembar tortilla goreng.</li>
+          <li>Oleskan kacang halus sebagai dasar.</li>
+          <li>Tambahkan daging, lalu topping lain seperti selada, tomat, bawang, alpukat, keju, dan krim asam.</li>
+          <li>Percikkan salsa dan perasan jeruk nipis.</li>
+        </ol>
+        <br><br><br><br><br><br><br><br>
+        <a href="https://youtu.be/BiWunaS-TNk?si=sdgDTB4cVYRuA7uV" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b9ce64dc-55bb-4788-b35a-e8aa37991b6d.png" alt="Grilled corn elote with cheese and spices" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Elote</h3>
+        <p class="recipe-description">Grilled corn on the cob smothered with mayonnaise, cheese, chili powder, and lime juice.</p>
+        <h3>Bahan</h3>
+        <ul>
+          <li>4 tongkol jagung manis (boleh dengan atau tanpa kulit)</li>
+          <li>4 sdm mayones</li>
+          <li>2 sdm krim asam (bisa diganti dengan yogurt tawar atau tambahan mayones)</li>
+          <li>1/2 cangkir keju cotija</li>
+          <li>1 sdt bubuk cabai (chili powder, atau cabai bubuk lokal sesuai selera)</li>
+          <li>1 sdm perasan jeruk nipis/lemon</li>
+          <li>1/2 sdt garam</li>
+          <li>Daun ketumbar cincang (opsional)</li>
+          <li>Tusuk jagung atau stik es krim (opsional, untuk memegang jagung)</li>
+        </ul>
+        <br><br><br><br><br><br><br><br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Pemanggang (grill), kompor, atau wajan datar</li>
+          <li>Kuas atau sendok untuk mengoles saus</li>
+          <li>Mangkuk kecil</li>
+          <li>Piring saji</li>
+        </ul>
+
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Bakar jagung di atas pemanggang atau wajan datar dengan api sedang.</li>
+          <li>Bolak-balik hingga seluruh permukaan agak gosong dan matang sempurna (sekitar 10–15 menit).</li>
+          <li>Di mangkuk kecil, campurkan mayones, krim asam, sedikit garam, dan perasan jeruk nipis.</li>
+          <li>Oles seluruh permukaan jagung panas dengan campuran saus.</li>
+          <li>Taburi keju parut secara merata.</li>
+          <li>Taburkan bubuk cabai sesuai selera (bisa pedas atau ringan).</li>
+          <li>Tambahkan daun ketumbar jika suka.</li>
+          <li>Sajikan segera selagi hangat.</li>
+          <li>Bisa diberi tambahan jeruk nipis sebagai pelengkap.</li>
+        </ol>
+        <br><br><br><br><br><br><br><br><br>
+        <a href="https://youtu.be/L1nR336Amzk?si=tvkrPDnzf0uK8ZHe" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a37eec13-c250-42d2-a183-851020579cbe.png" alt="Bowl of guacamole avocado dip with tortilla chips" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Guacamole</h3>
+        <p class="recipe-description">Mashed avocado dip mixed with onion, tomato, chili, lime juice, and cilantro.</p>
+        <h3>Bahan</h3>
+        <ul>
+          <li>2 buah alpukat matang (jenis mentega atau hass)</li>
+          <li>1 buah tomat merah kecil, buang biji, cincang halus</li>
+          <li>1/4 bawang bombay atau bawang merah, cincang halus</li>
+          <li>1 siung bawang putih, cincang halus (opsional)</li>
+          <li>1 buah cabai rawit atau cabai merah besar, buang biji dan cincang halus (opsional)</li>
+          <li>2 sdm daun ketumbar segar, cincang (opsional tapi autentik)</li>
+          <li>1–2 sdm air perasan jeruk nipis/lemon</li>
+          <li>Garam secukupnya</li>
+          <li>Merica secukupnya</li>
+        </ul>
+        <br><br><br><br><br><br><br>
+        <h3>Alat</h3>
+        <ul>    
+          <li>Mangkuk</li>
+          <li>Garpu atau ulekan (untuk menghancurkan alpukat)</li>
+          <li>Pisau & talenan</li>
+          <li>Sendok</li>
+        </ul>
+        <br><br>
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Belah alpukat, buang biji dan keruk dagingnya ke dalam mangkuk.</li>
+          <li>Hancurkan dengan garpu sesuai selera (boleh halus atau sedikit kasar untuk tekstur).</li>
+          <li>Masukkan tomat cincang, bawang, bawang putih, dan cabai (jika pakai).</li>
+          <li>Tambahkan daun ketumbar.</li>
+          <li>Tambahkan air perasan jeruk nipis/lemon, garam, dan merica.</li>
+          <li>Aduk rata, koreksi rasa.</li>
+          <li>Sajikan segera dengan tortilla chips, taco, burrito, atau salad.</li>
+        </ol>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <a href="https://youtu.be/tHVzFLtvbGQ?si=9b40QZLJ3vnoZGab" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+
+    <article class="recipe-card" tabindex="0">
+      <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f92c3dc0-c309-4f35-87b4-95df8b5d04ba.png" alt="Plate of nachos with cheese, jalapenos, and salsa" loading="lazy" />
+      <div class="recipe-content">
+        <h3 class="recipe-title">Nacho</h3>
+        <p class="recipe-description">Tortilla chips topped with melted cheese, jalapeños, meat, beans, and various toppings.</p>
+        <h3>Bahan</h3>
+        <ul>
+          <li>1 bungkus keripik tortilla (nacho chips) siap pakai</li>
+          <li>200 gram daging sapi cincang (bisa juga ayam suwir)</li>
+          <li>1/2 bawang bombay, cincang</li>
+          <li>1 siung bawang putih, cincang</li>
+          <li>1/2 sdt bubuk paprika atau cabai bubuk</li>
+          <li>1/2 sdt jintan bubuk (opsional)</li>
+          <li>Garam dan merica secukupnya</li>
+          <li>1,5 cangkir keju parut (cheddar, mozzarella, atau campuran — pilih yang mudah meleleh)</li>
+          <li>Tomat segar, potong dadu kecil</li>
+          <li>Alpukat atau guacamole</li>
+          <li>Jalapeño iris (boleh acar)</li>
+          <li>Daun ketumbar segar</li>
+          <li>Krim asam atau yogurt tawar</li>
+          <li>Salsa atau saus sambal</li>
+        </ul>
+
+        <h3>Alat</h3>
+        <ul>    
+          <li>Wajan (untuk daging)</li>
+          <li>Loyang atau pinggan tahan oven</li>
+          <li>Oven / air fryer (bisa juga disusun tanpa oven)</li>
+          <li>Pisau & talenan</li>
+          <li>Sendok</li>
+        </ul>
+
+        <h3>Cara Membuat:</h3>
+        <ol>
+          <li>Tumis bawang bombay dan bawang putih hingga harum.</li>
+          <li>Masukkan daging cincang, masak hingga matang dan kering.</li>
+          <li>Bumbui dengan paprika, jintan, garam, dan merica. Sisihkan.</li>
+          <li>Di atas loyang atau pinggan tahan panas, susun tortilla chips secara merata.</li>
+          <li>Taburi daging tumis di atasnya.</li>
+          <li>Taburkan keju parut merata di atas daging dan keripik.</li>
+          <li>Panggang dalam oven suhu 180°C selama ±5–8 menit, atau hingga keju meleleh sempurna.</li>
+          <li>Jika pakai air fryer: panggang 3–5 menit suhu 160–170°C.</li>
+          <li>Jika tanpa oven: bisa susun di atas wajan datar dengan tutup dan panaskan hingga keju leleh.</li>
+          <li>Setelah keluar dari oven, segera tambahkan tomat segar, alpukat/guacamole, jalapeño, daun ketumbar, dan krim asam sesuai selera.</li>
+          <li>Nikmati langsung selagi hangat dan keju masih meleleh!</li>
+        </ol>
+        <a href="https://youtu.be/5RoWxdsF5Wc?si=h8W2f2_onKoMv7Yl" class="btn">Coba Resep Sekarang</a>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  &copy; 2024 Food Recipes. All rights reserved.
+</footer>
+
+<script>
+  const mobileToggle = document.querySelector('.mobile-nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileToggle.addEventListener('click', () => {
+    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true' || false;
+    mobileToggle.setAttribute('aria-expanded', !expanded);
+    mobileMenu.classList.toggle('show');
+  });
+</script>
 
 </body>
 </html>
