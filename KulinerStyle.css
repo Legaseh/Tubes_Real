@@ -15,7 +15,7 @@ h1{
 }
 h2{
     font-family: "Libre Baskerville", serif;
-    color: #f8b936;
+    color: #fcb419;
 }
 h3{
     font-size: 30px;
@@ -120,7 +120,17 @@ a{
     padding: 20px;
     overflow: hidden;
 }
-
+.isi{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+button{
+    background-color: #ff3122;
+    border-radius: 20px;
+    border: none;
+}
 .card-container {
     display: flex;
     gap: 25px;
