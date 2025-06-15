@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("Data_Restoran.json")
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`errror ${response.status}`);
         }
         return response.json();
       })
@@ -101,3 +101,11 @@ if (tacoMuter) {
     }
   });
 }
+window.addEventListener("scroll", function () {
+  const navbar = document.querySelector("#navbar");
+  if (window.scrollY > 730) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
