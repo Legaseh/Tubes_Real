@@ -18,16 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   animateText(".judul-animasi", -30, 0.1);
   animateText(".judul-animasiMeksiko", 30, 0.3);
-
-  // Toggle menu navigasi jadi hp
-  const menuToggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav"); 
-
-  if (menuToggle && nav) {
-    menuToggle.addEventListener("click", () => {
-      nav.classList.toggle("active");
-    });
-  }
+  
 
   // Navigasi card (slider) pencetan kiri kanan
   const cardContainer = document.querySelector(".card-container");
