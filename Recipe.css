@@ -4,12 +4,12 @@
 
   .nav {
   font-family: 'Montserrat', sans-serif;
-  position: relative;
-  top: 10px;
+  position: fixed;
+  top: 0; 
   left: 0;
   width: 100%;
   z-index: 2000;
-  background-color: #f06b04;
+  background-color: #f8d9c000;
   padding-top: 0px;
   transition: 0.4s ease-in-out;
 }
@@ -89,7 +89,7 @@
   body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #f48e41;
+    background-color: #0f1f2f;
     color: #f5f5f5;
     line-height: 1.5;
     min-height: 100vh;
@@ -204,7 +204,7 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
   .recipe-card {
-    background-color: #8f3e00;
+    background-color: #1c2b3a;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 6px 12px rgb(0 0 0 / 0.3);
@@ -262,7 +262,7 @@
     display: none;
     flex-direction: column;
     gap: 1.5rem;
-    background-color: #f06b04;
+    background-color: #0f1f2f;
     position: fixed;
     inset: 0;
     padding: 6rem 2rem 2rem;
@@ -385,77 +385,3 @@
         padding: 12px;
     }
 }
-
-/* Perbaikan untuk navbar yang hilang */
-
-.nav {
-  font-family: 'Montserrat', sans-serif;
-  position: fixed;
-  top: 0; /* Ubah dari 10px ke 0 untuk positioning yang lebih stabil */
-  left: 0;
-  width: 100%;
-  z-index: 9999; /* Tingkatkan z-index dari 2000 ke 9999 */
-  background-color: rgba(248, 217, 192, 0.9); /* Tambahkan opacity untuk visibility */
-  backdrop-filter: blur(10px); /* Tambahkan blur effect untuk modern look */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  padding: 10px 0; /* Tambahkan padding */
-  transition: all 0.4s ease-in-out;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Tambahkan shadow ringan */
-}
-
-.nav.scrolled {
-  background-color: rgba(248, 217, 192, 0.95); /* Sedikit lebih opaque saat scroll */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  padding: 5px 0; /* Kurangi padding saat scroll untuk efek compact */
-}
-
-/* Pastikan elemen lain tidak menutupi navbar */
-header {
-  position: relative;
-  z-index: 1; /* Lebih rendah dari navbar */
-  /* ... sisa properties header ... */
-}
-
-main {
-  position: relative;
-  z-index: 1; /* Lebih rendah dari navbar */
-  margin-top: 80px; /* Tambahkan margin-top untuk menghindari overlap dengan fixed navbar */
-  /* ... sisa properties main ... */
-}
-
-/* Perbaikan untuk mobile */
-@media (max-width: 600px) {
-  .nav {
-    position: fixed;
-    top: 0;
-    height: 70px;
-    z-index: 9999; /* Pastikan z-index tinggi di mobile juga */
-    background-color: rgba(248, 217, 192, 0.95);
-  }
-  
-  main {
-    margin-top: 70px; /* Sesuaikan dengan tinggi navbar mobile */
-  }
-}
-
-/* Tambahan: Jika ada elemen dengan z-index tinggi, pastikan navbar lebih tinggi */
-.modal, .popup, .dropdown {
-  z-index: 10000; /* Hanya untuk elemen yang memang harus di atas navbar */
-}
-
-/* Styling tambahan untuk meningkatkan visibility navbar */
-.listNav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-  padding: 0 20px; /* Tambahkan padding horizontal */
-}
-
-.logo {
-  width: 60px;
-  height: auto;
-  z-index: inherit; /* Inherit dari parent (.nav) */
-}
-  
