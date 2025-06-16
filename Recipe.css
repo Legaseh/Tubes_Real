@@ -93,7 +93,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: rgb(205, 155, 89);
+  background-color: rgb(212, 149, 62);
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
@@ -202,7 +202,7 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 .recipe-card {
-  background-color: rgb(212, 149, 62);
+  background-color: rgb(226, 171, 94);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 6px 12px rgb(0 0 0 / 0.3);
