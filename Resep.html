@@ -4,318 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Food Recipes</title>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="KulinerJs.js" defer></script>
   <link href="Gambar/logo.png" rel="icon" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <style>
-    /* Reset & base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0f1f2f;
-      color: #f5f5f5;
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    button {
-      font-family: inherit;
-    }
-
-    header {
-      background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d36075ff-f925-4d0a-a34a-53e7a56cf3a1.png') center/cover no-repeat;
-      position: relative;
-      color: #f5f5f5;
-      text-align: center;
-      padding: 3rem 1rem 6rem;
-      clip-path: ellipse(100% 80% at 50% 20%);
-    }
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(15, 31, 47, 0.75);
-      pointer-events: none;
-      clip-path: ellipse(100% 80% at 50% 20%);
-    }
-    .header-content {
-      position: relative;
-      max-width: 720px;
-      margin: 0 auto;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.2rem;
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #f0eae1;
-      user-select: none;
-    }
-    .logo span {
-      font-weight: 400;
-      font-size: 0.8rem;
-      display: block;
-      margin-top: -4px;
-      opacity: 0.7;
-      letter-spacing: 0.12em;
-    }
-    nav {
-      display: flex;
-      gap: 2rem;
-      font-weight: 500;
-      font-size: 1rem;
-      user-select: none;
-    }
-    nav a {
-      position: relative;
-      padding-bottom: 4px;
-      transition: color 0.3s ease;
-    }
-    nav a.active,
-    nav a:hover {
-      color: #97b0b9;
-    }
-    nav a.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: #97b0b9;
-      border-radius: 2px;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: clamp(2rem, 5vw, 4rem);
-      margin: 0;
-    }
-    p.subtitle {
-      font-size: 1.1rem;
-      font-weight: 400;
-      opacity: 0.8;
-    }
-    .btn-primary {
-      background-color: transparent;
-      border: 2px solid #566e7f;
-      border-radius: 6px;
-      color: #97b0b9;
-      padding: 0.75rem 2rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-      user-select: none;
-      margin-top: 1rem;
-      letter-spacing: 0.03em;
-    }
-    .btn-primary:hover,
-    .btn-primary:focus {
-      background-color: #97b0b9;
-      color: #0f1f2f;
-      border-color: #97b0b9;
-      outline: none;
-    }
-
-    main {
-      width: 100%;
-      max-width: 1440px;
-      margin: 2rem auto 4rem;
-      padding: 0 1rem;
-      flex-grow: 1;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #c6d1d9;
-    }
-
-    .recipes-grid {
-      display: grid;
-      gap: 24px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    .recipe-card {
-      background-color: #1c2b3a;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 6px 12px rgb(0 0 0 / 0.3);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .recipe-card:hover,
-    .recipe-card:focus-within {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 28px rgb(0 0 0 / 0.5);
-      outline: none;
-    }
-    .recipe-image {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .recipe-content {
-      padding: 1rem 1.25rem 1.5rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    .recipe-title {
-      font-family: 'Playfair Display', serif;
-      font-weight:bolder;
-      font-size: 1.7rem;
-      margin-bottom: 0.5rem;
-      color: #dbe9f4;
-      user-select: none;
-      text-align: center;
-    }
-    .recipe-description {
-      font-size: 0.9rem;
-      color: #a3b1bf;
-      user-select: none;
-    }
-
-    footer {
-      background-color: #102533;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.9rem;
-      color: #6a7a8a;
-      user-select: none;
-    }
-
-    .mobile-nav-toggle {
-      display: none;
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: none;
-      border: none;
-      color: #f5f5f5;
-      cursor: pointer;
-      font-size: 2.4rem;
-      z-index: 20;
-    }
-    nav.mobile-nav {
-      display: none;
-      flex-direction: column;
-      gap: 1.5rem;
-      background-color: #0f1f2f;
-      position: fixed;
-      inset: 0;
-      padding: 6rem 2rem 2rem;
-      z-index: 15;
-      overflow-y: auto;
-      user-select: none;
-    }
-    nav.mobile-nav.show {
-      display: flex;
-    }
-    nav.mobile-nav a {
-      font-size: 1.4rem;
-      color: #97b0b9;
-      font-weight: 600;
-      border-bottom: 1px solid #2a4757;
-      padding-bottom: 0.5rem;
-    }
-
-    .btn {
-      background-color: rgb(118, 125, 161); 
-      padding: 15px 30px;
-      color: white;
-      border-radius: 12px; 
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 20px;
-      border: 2px solid #566e7f;
-      padding: 0.75rem 2rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-      user-select: none;
-    }
-
-    .btn:hover {
-      background-color: #15dae8; /* Warna tombol saat hover */
-    }
-
-    /* Media Queries */
-    @media (max-width: 767px) {
-      /* Mobile */
-      header {
-        padding: 2rem 1rem 5rem;
-        clip-path: ellipse(100% 90% at 50% 30%);
-      }
-      .mobile-nav-toggle {
-        display: block;
-      }
-      nav.desktop-nav {
-        display: none;
-      }
-    }
-    @media (min-width: 768px) {
-      /* Desktop layout */
-      nav.mobile-nav {
-        display: none !important;
-      }
-      nav.desktop-nav {
-        display: flex;
-      }
-    }
-    @media (min-width: 1440px) {
-      main {
-        padding: 0 3rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="Recipe.css">
 </head>
 <body>
 
-<header role="banner">
+<header>
   <div class="header-content">
-    <div class="logo" aria-label="Website logo and slogan">
-      <div>Aztec Cantina</div>
-      <span>Hanya cinta dan malam yang tak akan pernah habis</span>
-    </div>
-
-    <button aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu" class="mobile-nav-toggle">
-      <span class="material-icons">menu</span>
-    </button>
-
-    <nav class="desktop-nav" role="navigation" aria-label="Primary navigation">
-      <a href="#" class="active" tabindex="0" aria-current="page">Home</a>
-      <a href="#" tabindex="0">Recipes</a>
-      <a href="#" tabindex="0">Contact</a>
-    </nav>
-
-    <nav id="mobile-menu" class="mobile-nav" role="navigation" aria-label="Mobile navigation">
-      <a href="#" tabindex="0">Home</a>
-      <a href="#" tabindex="0">Recipes</a>
-      <a href="#" tabindex="0">Contact</a>
-    </nav>
+    <br><br><br><br><br><br>
+   <div class="nav" id="navbar">
+      <ul class="listNav">
+          <div class="navkiri">
+              <li class="listIlang"><img src="Gambar/logo.png" alt="Logo" class="logo"></li> 
+          </div>
+          <div class="navtengah">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="Food.html">Food</a></li>
+              <li><a href="Resep.html">Resep</a></li>
+              <li><a href="GameMakan.html">Games</a></li>
+          </div>
+          <div class="navkanan">
+              <li class="listIlang"><a href=""><model-viewer class="taco3d" id="taco3d_left" src="taco.glb" alt="Model 3D Taco Kiri"></model-viewer></a></li>
+          </div>
+      </ul>
+  </div>
 
     <h1>Mexico Food Recipes</h1>
     <p class="subtitle">Simple Recipes, Big Taste and Made with Love, Served with Flavor</p>
@@ -329,7 +45,7 @@
   <div id="resep"></div>
   <h2 class="section-title">Famous Favorites</h2>
   <section class="recipes-grid" aria-label="List of food recipe cards with name and image">
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c9419ede-aeaa-431c-a0ea-6dab1d4ba3ef.png" alt="Taco food dish with fillings served on plate" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Taco</h3>
@@ -378,9 +94,9 @@
         <br><br><br><br><br><br><br><br><br><br><br>
         <a href="https://youtu.be/eKVKYNFKx54?si=4MpAiLedMqAOKr8m" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/872488a9-c221-4377-8bed-f427a8058fc1.png" alt="Buritto rolled tortilla with fillings wrapped tightly" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Buritto</h3>
@@ -432,9 +148,9 @@
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <a href="https://youtu.be/krkf7ObsTM4?si=zkI2NxTt-ea7gGDr" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/547539fb-18d9-4d79-a9e5-dcd76f4cd165.png" alt="Enchilada dish rolled with sauce and cheese" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Enchilada</h3>
@@ -493,9 +209,9 @@
         </ol>
         <a href="https://youtu.be/8u2_RmrkD_g?si=7kYzzGDXBQ7YsufX" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f217701-4969-4a86-88a3-361ea5b25af5.png" alt="Quesadilla toasted tortilla with melted cheese" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Quesadilla</h3>
@@ -546,9 +262,9 @@
         <br><br><br><br><br><br><br><br><br><br><br>
         <a href="https://youtu.be/wTYD1dt7omk?si=8ZQXzcZs2NATCscn" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0141127a-49f9-41b8-ba44-58560ee81894.png" alt="Tamales wrapped in cornhusk, steamed savory dish" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Tamales</h3>
@@ -604,9 +320,9 @@
           <br><br><br><br><br>
           <a href="https://youtu.be/36IicNJ5FNc?si=Bim6osWfOfXZ_74H" class="btn">Coba Resep Sekarang</a>
         </div>
-      </article>
+      </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7c9ae6eb-1db2-4a5f-b972-4fee4cddd341.png" alt="Chiles en Nogada stuffed pepper with creamy walnut sauce" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Chiles en Nogada</h3>
@@ -667,9 +383,9 @@
         <br><br><br><br><br><br><br><br><br><br>
         <a href="https://youtu.be/z-iWVJQbSaI?si=Je1TFOJfUaMNQFoA" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8b01ca9d-c579-4709-873a-f7945eebc8c0.png" alt="Bowl of Pozole soup served with garnish" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Pozole</h3>
@@ -728,9 +444,9 @@
         <br><br><br><br><br><br><br><br><br><br>
         <a href="https://youtu.be/Icf1f1laB50?si=s5ZwZ0UFVaJAPjDW" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0ff9910f-f1f7-4217-b0fc-53c732adc5f9.png" alt="Mole sauce poured over meat in a dish" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Mole (sauce)</h3>
@@ -790,9 +506,9 @@
         </ol>
         <a href="https://youtu.be/LpRx6YtpWcU?si=C5WRnWkKtafzCyH7" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ed55d73-0146-46b8-9b7d-6aa2ea85a6ff.png" alt="Grilled fajitas with vegetables and tortillas" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Fajitas</h3>
@@ -840,9 +556,9 @@
         </ol>
         <a href="https://youtu.be/g-LT0igt9lo?si=vQV0A0A1vN8V2M4V" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48451b07-ea6d-457d-b412-fe3d139f5d6a.png" alt="Tostada flat tortilla topped with fresh ingredients" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Tostada</h3>
@@ -889,9 +605,9 @@
         <br><br><br><br><br><br><br><br>
         <a href="https://youtu.be/BiWunaS-TNk?si=sdgDTB4cVYRuA7uV" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b9ce64dc-55bb-4788-b35a-e8aa37991b6d.png" alt="Grilled corn elote with cheese and spices" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Elote</h3>
@@ -932,9 +648,9 @@
         <br><br><br><br><br><br><br><br><br>
         <a href="https://youtu.be/L1nR336Amzk?si=tvkrPDnzf0uK8ZHe" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a37eec13-c250-42d2-a183-851020579cbe.png" alt="Bowl of guacamole avocado dip with tortilla chips" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Guacamole</h3>
@@ -973,9 +689,9 @@
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <a href="https://youtu.be/tHVzFLtvbGQ?si=9b40QZLJ3vnoZGab" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
 
-    <article class="recipe-card" tabindex="0">
+    <section class="recipe-card">
       <img class="recipe-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f92c3dc0-c309-4f35-87b4-95df8b5d04ba.png" alt="Plate of nachos with cheese, jalapenos, and salsa" loading="lazy" />
       <div class="recipe-content">
         <h3 class="recipe-title">Nacho</h3>
@@ -1023,24 +739,38 @@
         </ol>
         <a href="https://youtu.be/5RoWxdsF5Wc?si=h8W2f2_onKoMv7Yl" class="btn">Coba Resep Sekarang</a>
       </div>
-    </article>
+    </section>
   </section>
 </main>
 
-<footer>
-  &copy; 2024 Food Recipes. All rights reserved.
-</footer>
-
-<script>
-  const mobileToggle = document.querySelector('.mobile-nav-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  mobileToggle.addEventListener('click', () => {
-    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true' || false;
-    mobileToggle.setAttribute('aria-expanded', !expanded);
-    mobileMenu.classList.toggle('show');
-  });
-</script>
+ <div class="footer" >
+            <div class="container_footer">
+                <div class="grid-item1">
+                    <p><img src="Gambar/logo.png" alt="logo" class="logo1"></p>
+                </div>
+                <div class="grid-item2">
+                    <p> Aztec Cantina - a WebDas project. <br>
+                        © Webdesign by 2472026 - 247202 - 247202 <br> <br>
+                        Bandung, Indonesia. <br><br>
+                        Contact us: <br>
+                        2472026@maranatha.ac.id <br>
+                        +62-8956-0430-0898 <br> <br>
+                        FOOD FROM THE EARTH
+                    </p>
+                </div>
+                <div class="grid-item">
+                    <p>
+                        Find us on SoMe here: <br>
+                        <h3>Facebook</h3>
+                        <h3>Instagram</h3>
+                        <a href="kritiksaran.html" target="_blank">Criticism and Suggestions</a>
+                    </p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 TUBES WEBDAS KULINER MEKSIKO</p>
+            </div>
+          </div>
 
 </body>
 </html>

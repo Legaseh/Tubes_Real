@@ -1,0 +1,461 @@
+*, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+  .nav {
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  background-color: #f8d9c000;
+  padding-top: 0px;
+  transition: 0.4s ease-in-out;
+}
+.nav.scrolled {
+  background-color: #f8d9c0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.listNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.navtengah {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.navtengah li a {
+  text-decoration: none;
+  color: #f06b04;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.navtengah li a:hover {
+  color: #757575;
+}
+.logo {
+  width: 60px;
+  height: auto;
+}
+
+.footer {
+    height: 500px;
+    background-color: #9f4509;
+    color: #f9ba33;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container_footer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 20px;
+}
+.container_footer div{
+    padding: 30px;
+    text-align: left;
+}
+.container_footer .grid-item1{
+    text-align: right;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+.taco3d{
+    height: 60px;
+    width: 60px;
+}
+
+.logo1{
+    width: 200px;
+    height: 200px;
+}
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f1f2f;
+    color: #f5f5f5;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 0;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  button {
+    font-family: inherit;
+  }
+  header {
+    background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d36075ff-f925-4d0a-a34a-53e7a56cf3a1.png') center/cover no-repeat;
+    position: relative;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 3rem 1rem 6rem;
+    clip-path: ellipse(100% 80% at 50% 20%);
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 31, 47, 0.75);
+    pointer-events: none;
+    clip-path: ellipse(100% 80% at 50% 20%);
+    z-index: 1;
+  }
+  .header-content {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #f0eae1;
+    user-select: none;
+  }
+  
+  .logo span {
+    font-weight: 400;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: -4px;
+    opacity: 0.7;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin: 0;
+  }
+  p.subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+  .btn-primary {
+    background-color: transparent;
+    border: 2px solid #566e7f;
+    border-radius: 6px;
+    color: #97b0b9;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    user-select: none;
+    margin-top: 1rem;
+    letter-spacing: 0.03em;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #97b0b9;
+    color: #0f1f2f;
+    border-color: #97b0b9;
+    outline: none;
+  }
+  main {
+    width: 100%;
+    max-width: 1440px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #c6d1d9;
+  }
+  .recipes-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .recipe-card {
+    background-color: #1c2b3a;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgb(0 0 0 / 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .recipe-card:hover,
+  .recipe-card:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgb(0 0 0 / 0.5);
+    outline: none;
+  }
+  .recipe-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .recipe-content {
+    padding: 1rem 1.25rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .recipe-title {
+    font-family: 'Playfair Display', serif;
+    font-weight:bolder;
+    font-size: 1.7rem;
+    margin-bottom: 0.5rem;
+    color: #dbe9f4;
+    user-select: none;
+    text-align: center;
+  }
+  .recipe-description {
+    font-size: 0.9rem;
+    color: #a3b1bf;
+    user-select: none;
+  }
+  .mobile-nav-toggle {
+    display: none;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: #f5f5f5;
+    cursor: pointer;
+    font-size: 2.4rem;
+    z-index: 20;
+  }
+  nav.mobile-nav {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: #0f1f2f;
+    position: fixed;
+    inset: 0;
+    padding: 6rem 2rem 2rem;
+    z-index: 15;
+    overflow-y: auto;
+    user-select: none;
+  }
+  nav.mobile-nav.show {
+    display: flex;
+  }
+  nav.mobile-nav a {
+    font-size: 1.4rem;
+    color: #97b0b9;
+    font-weight: 600;
+    border-bottom: 1px solid #2a4757;
+    padding-bottom: 0.5rem;
+  }
+  .btn {
+    background-color: rgb(118, 125, 161); 
+    padding: 15px 30px;
+    color: white;
+    border-radius: 12px; 
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+    border: 2px solid #566e7f;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    user-select: none;
+  }
+  .btn:hover {
+    background-color: #15dae8;
+  }
+  
+  
+@media (max-width: 600px) {
+    .header{
+        height: 350px;
+        width: 412px;
+    }
+    #samain{
+        width: 20px;
+        margin-right: 100px;
+    }
+    .cardHeader1,.cardHeader2,.cardHeader3{
+        margin-left: 190px;
+    }
+    .isi{
+        flex-direction: column;
+    }
+    .isiKiri{
+        width: 340px;
+    }
+    .isiKanan{
+        width: 340px;
+    }
+    .sumber{
+        height: 250px;
+    }
+    h1{
+        width: 412px;
+        font-size: 55px;
+    }
+    a{
+        font-family:Georgia, 'Times New Roman', Times, serif ;
+    }
+    .judul-animasi{
+        margin-top: 65px;
+    }
+    .card{
+        height: 65vh;
+    }
+    .nav {
+        position: fixed;
+        top: 0;
+        flex-direction: row;
+        height: 70px;
+    }
+    .listIlang{
+        display: none;
+    }
+    .navtengah{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        gap: 30px;
+        height: 70px;
+    }
+    .footer{
+        height: 1200px;
+    }
+    .container_footer {
+        grid-template-columns: 1fr; 
+        grid-template-rows: repeat(3, auto); 
+    }
+    .container_footer div{
+        text-align: center;
+    }
+    .container_footer .grid-item1{
+        text-align: center;
+    }
+    .container_footer .grid-item2{
+        text-align: left;
+        margin-left: 30px;
+    }
+    .form {
+        width: 350px;
+        padding: 20px;
+        margin: 100px 0px 0px 10px;
+    }
+
+    .saran input,.saran select,.saran textarea {
+        font-size: 16px;
+    }
+
+    .saran button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Perbaikan untuk navbar yang hilang */
+
+.nav {
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  top: 0; /* Ubah dari 10px ke 0 untuk positioning yang lebih stabil */
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* Tingkatkan z-index dari 2000 ke 9999 */
+  background-color: rgba(248, 217, 192, 0.9); /* Tambahkan opacity untuk visibility */
+  backdrop-filter: blur(10px); /* Tambahkan blur effect untuk modern look */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  padding: 10px 0; /* Tambahkan padding */
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Tambahkan shadow ringan */
+}
+
+.nav.scrolled {
+  background-color: rgba(248, 217, 192, 0.95); /* Sedikit lebih opaque saat scroll */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 5px 0; /* Kurangi padding saat scroll untuk efek compact */
+}
+
+/* Pastikan elemen lain tidak menutupi navbar */
+header {
+  position: relative;
+  z-index: 1; /* Lebih rendah dari navbar */
+  /* ... sisa properties header ... */
+}
+
+main {
+  position: relative;
+  z-index: 1; /* Lebih rendah dari navbar */
+  margin-top: 80px; /* Tambahkan margin-top untuk menghindari overlap dengan fixed navbar */
+  /* ... sisa properties main ... */
+}
+
+/* Perbaikan untuk mobile */
+@media (max-width: 600px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    height: 70px;
+    z-index: 9999; /* Pastikan z-index tinggi di mobile juga */
+    background-color: rgba(248, 217, 192, 0.95);
+  }
+  
+  main {
+    margin-top: 70px; /* Sesuaikan dengan tinggi navbar mobile */
+  }
+}
+
+/* Tambahan: Jika ada elemen dengan z-index tinggi, pastikan navbar lebih tinggi */
+.modal, .popup, .dropdown {
+  z-index: 10000; /* Hanya untuk elemen yang memang harus di atas navbar */
+}
+
+/* Styling tambahan untuk meningkatkan visibility navbar */
+.listNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px; /* Tambahkan padding horizontal */
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  z-index: inherit; /* Inherit dari parent (.nav) */
+}
+  
