@@ -194,7 +194,7 @@ main {
   font-weight: bolder;
   text-align: center;
   margin-bottom: 4rem;
-  color: #c6d1d9;
+  color: rgb(82, 25, 3);
 }
 .recipes-grid {
   display: grid;
@@ -202,7 +202,7 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 .recipe-card {
-  background-color: rgb(240, 163, 53);
+  background-color: rgb(212, 149, 62);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 6px 12px rgb(0 0 0 / 0.3);
@@ -235,8 +235,7 @@ main {
   font-weight:bolder;
   font-size: 1.7rem;
   margin-bottom: 0.5rem;
-  color: rgb(121, 82, 5);
-  user-select: none;
+  color: rgb(82, 25, 3);
   text-align: center;
 }
 .recipe-description {
@@ -279,7 +278,7 @@ nav.mobile-nav a {
   padding-bottom: 0.5rem;
 }
 .btn {
-  background-color: rgb(118, 125, 161); 
+  background-color: rgb(168, 189, 82); 
   padding: 15px 30px;
   color: white;
   border-radius: 12px; 
@@ -294,7 +293,7 @@ nav.mobile-nav a {
   user-select: none;
 }
 .btn:hover {
-  background-color: #15dae8;
+  background-color: #25c410;
 }
   
   
