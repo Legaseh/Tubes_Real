@@ -503,9 +503,7 @@ iframe{
         margin: 100px 0px 0px 10px;
     }
 
-    .saran input,
-    .saran select,
-    .saran textarea {
+    .saran input,.saran select,.saran textarea {
         font-size: 16px;
     }
 
