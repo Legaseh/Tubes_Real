@@ -183,14 +183,57 @@ a{
 }
 .isi{
     display: flex;
-    flex-direction: column;
-    border: 1px solid black;
+    flex-direction: row;
+    background-color: #f06a0400;
+    justify-content: space-around;
+}
+.isiKiri{
+    width: 750px;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: justify;
+}
+.isiKiri h2{
+    text-align: center;
+    color: black;
+    font-size: 35px;
+    text-shadow: 1px -3px 4px rgba(255, 255, 255, 0.5);
+}
+.sumber{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 1px dashed #ac854f;
+    border-radius: 15px;
+    height: 150px;
+    justify-content: center;
+    padding-top: 10px;
+}
+.isiKanan{
+    background-image: url(/Gambar/Gemini_Generated_Image_plugxwplugxwplug.png);
+    background-size: cover;
+    width: 500px;
+    height: 600px;
+    border-radius: 10px;
+    margin: 60px 20px 20px 20px;
+}
+.info1{
+    background-color: #f8efd2;
     border-radius: 20px;
+    padding: 20px;
+    border-left: 5px solid black;
+    margin-bottom: 5px;
 }
 button{
-    background-color: #ff3122;
+    cursor: pointer;
+    background-color: #811e17;
+    color: white;
     border-radius: 20px;
+    padding: 10px 30px 10px 30px;
     border: none;
+    font-size: 15px;
 }
 .card-container {
     display: flex;
@@ -334,6 +377,18 @@ iframe{
     }
     .cardHeader1,.cardHeader2,.cardHeader3{
         margin-left: 190px;
+    }
+    .isi{
+        flex-direction: column;
+    }
+    .isiKiri{
+        width: 340px;
+    }
+    .isiKanan{
+        width: 340px;
+    }
+    .sumber{
+        height: 250px;
     }
     h1{
         width: 412px;

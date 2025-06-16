@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }); 
 
 
-// Model 3D Taco scroll
+// scroll buat taco sm navbar
 const tacoMuter = document.querySelector(".taco3d"); 
 if (tacoMuter) {
   window.addEventListener("scroll", () => {
@@ -99,13 +99,12 @@ if (tacoMuter) {
     } else if (tacoMuter.setAttribute) { // Fallback jika cameraOrbit adalah atribut
         tacoMuter.setAttribute("camera-orbit", `${theta}rad ${phi}deg ${radius}m`);
     }
+    // nav
+    const navbar = document.querySelector("#navbar");
+    if (window.scrollY > 730) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
   });
 }
-window.addEventListener("scroll", function () {
-  const navbar = document.querySelector("#navbar");
-  if (window.scrollY > 730) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
-});
