@@ -1,6 +1,6 @@
 body{
-    background-image: url(Gambar/LatarGame.png);
     background-repeat: no-repeat;
+    background-image: url(Gambar/LatarGame.png);
     background-size: cover;
     margin: 0px;
 }
