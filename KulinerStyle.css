@@ -53,7 +53,7 @@ a{
     flex-direction: column;
 }
 .header{
-    background-image: url(/Gambar/Gemini_Generated_Image_2tu8aq2tu8aq2tu8.png) ;
+    background-image: url(/Gambar/awalan.png) ;
     background-repeat: no-repeat;
     background-size: cover;
     height: 730px;
@@ -174,7 +174,7 @@ a{
 }
 .main{
     background-color: #fedcc8;
-    background-image: url(/Gambar/Screenshot\ 2025-06-15\ 195736.png);
+    background-image: url(/Gambar/utama.png);
     background-size: 1520px;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -212,7 +212,8 @@ a{
     padding-top: 10px;
 }
 .isiKanan{
-    background-image: url(/Gambar/Gemini_Generated_Image_plugxwplugxwplug.png);
+    /* Nama bangunannya Chichén Itzá */
+    background-image: url(/Gambar/sejarah.png); 
     background-size: cover;
     width: 500px;
     height: 600px;
@@ -245,7 +246,7 @@ button{
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 300px;
-    background-color: rgba(255, 255, 255, 0.91);
+    background-color: #f7f1e0e9;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 9px 20px 10px rgba(0,0,0,0.1);
@@ -350,14 +351,74 @@ iframe{
     padding: 20px;
 }
 .container_footer div{
-  padding: 30px;
-  text-align: left;
+    padding: 30px;
+    text-align: left;
 }
 .container_footer .grid-item1{
     text-align: right;
     padding-right: 20px;
     padding-top: 20px;
 }
+.form {
+    font-family: 'Montserrat', sans-serif;
+    width: 600px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #fff3e0;
+    border: 2px solid #f8d9c0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form h2 {
+    text-align: center;
+    color: #9f4509;
+    margin-bottom: 20px;
+}
+
+.saran {
+    display: flex;
+    flex-direction: column;
+}
+
+.saran label {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #5d3200;
+}
+
+.saran input,.saran select,.saran textarea {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1.5px solid #f2b47e;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: #fffdf9;
+}
+
+.saran textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.saran button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9ba33;
+    border: none;
+    border-radius: 8px;
+    color: #5d3200;
+    transition:0.2s ease-in-out;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.saran button:hover {
+    background-color: #e09e21;
+}
+
 /* Untuk Animasi Judul Kuliner Meksiko */
 @keyframes hurufMasuk {
   to {
@@ -435,6 +496,22 @@ iframe{
     .container_footer .grid-item2{
         text-align: left;
         margin-left: 30px;
+    }
+    .form {
+        width: 350px;
+        padding: 20px;
+        margin: 100px 0px 0px 10px;
+    }
+
+    .saran input,
+    .saran select,
+    .saran textarea {
+        font-size: 16px;
+    }
+
+    .saran button {
+        font-size: 16px;
+        padding: 12px;
     }
 }
 

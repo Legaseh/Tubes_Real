@@ -108,3 +108,10 @@ if (tacoMuter) {
     }
   });
 }
+
+const kirim = document.querySelector("#submit")
+if (kirim){
+  kirim.addEventListener("click",()=>{
+    alert("Terima Kasih")
+  })
+}
