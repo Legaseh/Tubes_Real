@@ -53,7 +53,7 @@ a{
     flex-direction: column;
 }
 .header{
-    background-image: url(/Gambar/awalan.png) ;
+    background-image: url(Gambar/awalan.png) ;
     background-repeat: no-repeat;
     background-size: cover;
     height: 730px;
@@ -81,26 +81,26 @@ a{
 }
 .cardHeader1{
     transform: rotate(-5deg) translateY(20px);
-    background-image: url(/Gambar-Food/gambar.burrito.jpg);
+    background-image: url(Gambar-Food/gambar.burrito.jpg);
     background-size: cover;
 }
 .cardHeader1:hover{
     transform: rotate(5deg) translateY(150px);
 }
 .cardHeader2{
-    background-image: url(/Gambar-Food/gambar.mole.jpg);
+    background-image: url(Gambar-Food/gambar.mole.jpg);
     background-size: cover;
 }
 .cardHeader2:hover{
     transform: rotate(-10deg) translateY(-110px);
 }
 .cardHeader3{
-    background-image: url(/Gambar-Food/gambar.fajitas.jpg);
+    background-image: url(Gambar-Food/gambar.fajitas.jpg);
     background-size: cover;
     transform: rotate(9deg) translateY(20px);
 }
 .cardHeader33{
-    background-image: url(/Gambar-Food/gambar.quesadilla.jpg);
+    background-image: url(Gambar-Food/gambar.quesadilla.jpg);
     background-size: cover;
     transform: rotate(-9deg) translateY(20px);
 }
@@ -108,14 +108,14 @@ a{
     transform: rotate(-20deg) translateY(160px);
 }
 .cardHeader22{
-    background-image: url(/Gambar-Food/gambar.pozole.jpg);
+    background-image: url(Gambar-Food/gambar.pozole.jpg);
     background-size: cover;
 }
 .cardHeader22:hover{
     transform: rotate(10deg) translateY(-110px);
 }
 .cardHeader11{
-    background-image: url(/Gambar-Food/gambar.enchilada.jpg);
+    background-image: url(Gambar-Food/gambar.enchilada.jpg);
     background-size: cover;
     transform: rotate(5deg) translateY(20px);
 }
@@ -174,7 +174,7 @@ a{
 }
 .main{
     background-color: #fedcc8;
-    background-image: url(/Gambar/utama.png);
+    background-image: url(Gambar/utama.png);
     background-size: 1520px;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -213,7 +213,7 @@ a{
 }
 .isiKanan{
     /* Nama bangunannya Chichén Itzá */
-    background-image: url(/Gambar/sejarah.png); 
+    background-image: url(Gambar/sejarah.png); 
     background-size: cover;
     width: 500px;
     height: 600px;
