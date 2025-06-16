@@ -118,11 +118,10 @@ header {
   clip-path: ellipse(100% 80% at 50% 20%);
 }
 header::after {
-  content: "";
+  content: ""; 
   position: absolute;
   inset: 0;
   background: rgba(15, 31, 47, 0.75);
-  pointer-events: none;
   clip-path: ellipse(100% 80% at 50% 20%);
   z-index: 1;
 }
@@ -170,7 +169,6 @@ h1 {
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  user-select: none;
   margin-top: 1rem;
   letter-spacing: 0.03em;
 }
@@ -264,8 +262,6 @@ nav.mobile-nav {
   inset: 0;
   padding: 6rem 2rem 2rem;
   z-index: 15;
-  overflow-y: auto;
-  user-select: none;
 }
 nav.mobile-nav.show {
   display: flex;
@@ -290,7 +286,6 @@ nav.mobile-nav a {
   padding: 0.75rem 2rem;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  user-select: none;
 }
 .btn:hover {
   background-color: #25c410;
