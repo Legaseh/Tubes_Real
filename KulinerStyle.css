@@ -3,14 +3,17 @@ body{
     background-color: #f8d9c0;
     margin: 0px;
     font-family: "Playfair Display", serif;
-    
+    background-image: url(Gambar/awalan.png);
+    background-size: 1520px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 /* ----- text text kayak h1-6, p, span dll ----- */
 h1{
     font-family: "Playfair Display", serif;
     font-weight: 100;
-    font-size: 14vh;
-    color: #b26f18;
+    font-size: 400%;
+    color: #ff8800;
 }
 h2{
     font-family: "Libre Baskerville", serif;
@@ -25,12 +28,6 @@ a{
     font-size: 20px;
 }
 /* ----- text text kayak h1-6, p, span dll (Selesai) ----- */
-.judul-animasi{
-    margin-top: 190px;
-}
-.judul-animasiMeksiko{
-    margin-top: 15px;
-}
 .hilangin{
     color: #66666600;
 }
@@ -52,9 +49,6 @@ a{
     flex-direction: column;
 }
 .header{
-    background-image: url(Gambar/awalan.png) ;
-    background-repeat: no-repeat;
-    background-size: cover;
     height: 730px;
     text-align: center;
     display: flex;
@@ -67,6 +61,22 @@ a{
     align-items: center;
     justify-content: center;
 }
+.itemHeader1{
+    width: 530px;
+    border: none;
+    margin: auto;
+    background-image: url(Gambar_Ganti/makan1.jpg);
+    background-size: cover;
+    transition: 0.5s ease-in;
+    border-radius: 20px;
+    background-position: center;
+    transform: scale(1);
+    opacity: 1;
+}
+.nyatuin{
+    color: #e09e21;
+}
+
 #samain{
     position: absolute;
     height: 200px;
@@ -120,11 +130,9 @@ a{
 }
 
 .header h1{
-    text-shadow: 9px 2px 4px rgba(255, 255, 255, 0.599);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.599);
     transition: all 0.3s ease-in;
-}
-.header h1:hover{
-    text-shadow: 9px 2px 4px rgba(0, 0, 0, 0.599);
+    cursor: pointer;
 }
 
 /* ==== NAVBAR STYLES ==== */
@@ -135,9 +143,11 @@ a{
     left: 0;
     width: 100%;
     z-index: 1;
-    background-color: #f8d9c000;
+    background-color: #ffa45a;
     padding-top: 0px;
     transition: 0.4s ease-in-out;
+    background-color: #fff7e6;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 .nav.scrolled {
     background-color: #f8d9c0;
@@ -161,7 +171,7 @@ a{
 
 .navtengah li a {
     text-decoration: none;
-    color: #f06b04;
+    color: black;
     font-weight: bold;
     font-size: 1rem;
     border-radius: 5px;
@@ -172,11 +182,6 @@ a{
     color: #757575;
 }
 .main{
-    background-color: #fedcc8;
-    background-image: url(Gambar/utama.png);
-    background-size: 1520px;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     padding: 20px;
     overflow: hidden;
 }
@@ -235,7 +240,7 @@ button{
     font-size: 15px;
 }
 .KsHome button{
-     width: 20vh;
+    width: 20vh;
     height: 5vh;
     border-radius: 15px;
     border: none;
@@ -427,7 +432,48 @@ iframe{
 .saran button:hover {
     background-color: #e09e21;
 }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff7e6;
+    padding: 10px 30px;
+    position: sticky;
+    justify-content: space-evenly;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e09e21;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links li a {
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-weight: 900;
+    transition: color 0.7s;
+}
+
+.nav-links li a:hover {
+    color: #e09e21;
+}
+
+.menu-toggle {
+    font-size: 28px;
+    display: none;
+    cursor: pointer;
+}
 /* Untuk Animasi Judul Kuliner Meksiko */
 @keyframes hurufMasuk {
   to {
@@ -441,12 +487,37 @@ iframe{
         height: 350px;
         width: 412px;
     }
+    .itemHeader{
+        z-index: 1;
+    }
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #fff7e6;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
     #samain{
         width: 20px;
         margin-right: 100px;
+        z-index: 0;
     }
     .cardHeader1,.cardHeader2,.cardHeader3{
         margin-left: 190px;
+        z-index: 0;
     }
     .isi{
         flex-direction: column;
@@ -467,27 +538,14 @@ iframe{
     a{
         font-family:Georgia, 'Times New Roman', Times, serif ;
     }
-    .judul-animasi{
-        margin-top: 65px;
-    }
     .card{
         height: 65vh;
     }
-    .nav {
-        position: fixed;
-        top: 93%;
-        flex-direction: row;
-        height: 70px;
-    }
+    
+
+
     .listIlang{
         display: none;
-    }
-    .navtengah{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        gap: 30px;
-        height: 70px;
     }
     .footer{
         height: 1200px;

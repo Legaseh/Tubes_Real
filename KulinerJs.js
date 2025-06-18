@@ -92,22 +92,54 @@ if (tacoMuter) {
   window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
     const theta = scrollY * 0.002;
-    const phi = 70; // sudut vertikal tetap
-    const radius = 100; // jarak kamera, pastikan ini sesuai dengan skala model Anda
+    const phi = 70; 
+    const radius = 100; 
     if (tacoMuter.cameraOrbit !== undefined) {
         tacoMuter.cameraOrbit = `${theta}rad ${phi}deg ${radius}m`;
-    } else if (tacoMuter.setAttribute) { // Fallback jika cameraOrbit adalah atribut
+    } else if (tacoMuter.setAttribute) { 
         tacoMuter.setAttribute("camera-orbit", `${theta}rad ${phi}deg ${radius}m`);
-    }
-    // nav
-    const navbar = document.querySelector("#navbar");
-    if (window.scrollY > 730) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
     }
   });
 }
+
+const navbar = document.querySelector("#navbar");
+let lastScrollY = window.scrollY;
+
+window.addEventListener("scroll", () => {
+  const currentScrollY = window.scrollY;
+
+  if (currentScrollY > lastScrollY) {
+    navbar.style.transform = "translateY(-110%)";
+  } else {
+    navbar.style.transform = "translateY(0)";
+  }
+
+  lastScrollY = currentScrollY;
+});
+
+const judul = document.querySelector('.nyatuin');
+const header = document.querySelector('.itemHeader1');
+
+function getRandomGambar() {
+  const r = Math.floor(Math.random() * 5) + 1;
+  return `url(Gambar_Ganti/makan${r}.jpg)`;
+}
+
+judul.addEventListener('mouseenter', () => {
+  header.style.transform = 'scale(1.5)';
+  header.style.opacity = '0';
+  setTimeout(() => {
+    header.style.backgroundImage = getRandomGambar();
+    header.style.transform = 'scale(0.5)';
+    
+    setTimeout(() => {
+      header.style.opacity = '1';
+      header.style.transform = 'scale(1)';
+    }, 50);
+  }, 500);
+});
+
+
 
 const kirim = document.querySelector("#submit")
 if (kirim){
@@ -115,3 +147,10 @@ if (kirim){
     alert("Terima Kasih")
   })
 }
+
+const toggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});

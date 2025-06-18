@@ -2,67 +2,99 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
-    .hover-text span {
-      display: inline-block;
-      transition: background-color 0.3s ease;
-    }
+    .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff7e6;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
-    .hover-text.forward span {
-      background-color: yellow;
-    }
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e09e21;
+}
 
-    .hover-text.backward span {
-      background-color: yellow;
-    }
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
 
-    .hover-text.forward span {
-      transition-delay: calc(var(--i) * 0.05s);
-    }
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+}
 
-    .hover-text.backward span {
-      transition-delay: calc((var(--total) - var(--i)) * 0.05s);
-    }
+.nav-links li a:hover {
+  color: #e09e21;
+}
+
+.menu-toggle {
+  font-size: 28px;
+  display: none;
+  cursor: pointer;
+}
+
+/* Responsive style */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #fff7e6;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    gap: 20px;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
   </style>
 </head>
+
 <body>
+  <nav class="navbar">
+  <div class="logo">KULINERKU</div>
+  <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#beranda">Beranda</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#galeri">Galeri</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+</nav>
 
-  <p class="hover-text" id="dynamicText"></p>
+</nav>
+<script>
+const toggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
 
-  <script>
-    const text = "Empanadas!";
-    const container = document.getElementById("dynamicText");
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
+</script>
 
-    // Generate spans with CSS variable index
-    [...text].forEach((char, i) => {
-      const span = document.createElement("span");
-      span.textContent = char;
-      span.style.setProperty('--i', i);
-      container.appendChild(span);
-    });
-
-    // Total character count to help with reverse delay
-    container.style.setProperty('--total', text.length);
-
-    let lastX = 0;
-
-    container.addEventListener("mouseenter", (e) => {
-      const currentX = e.clientX;
-      const direction = currentX > lastX ? 'forward' : 'backward';
-
-      container.classList.remove('forward', 'backward');
-      container.classList.add(direction);
-
-      lastX = currentX;
-    });
-
-    container.addEventListener("mousemove", (e) => {
-      lastX = e.clientX;
-    });
-
-    container.addEventListener("mouseleave", () => {
-      container.classList.remove('forward', 'backward');
-    });
-  </script>
 </body>
 </html>
