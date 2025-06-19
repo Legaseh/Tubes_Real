@@ -4,7 +4,8 @@ body{
     margin: 0px;
     font-family: "Playfair Display", serif;
     background-image: url(Gambar/awalan.png);
-    width: 100vw;     /* full lebar */
+    overflow-x: hidden;
+    width: 100vw; 
     height: 100vh;
     background-size: cover;
     background-attachment: fixed;
@@ -52,6 +53,7 @@ a{
     transition: all 1s ease-in-out; 
 }
 .kataisi h2{
+    margin: 5px;
     cursor: pointer;
     border: 1px solid ;
     border-radius: 20px;
