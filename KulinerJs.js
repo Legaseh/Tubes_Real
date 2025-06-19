@@ -122,14 +122,15 @@ const header = document.querySelector('.itemHeader1');
 
 function getRandomGambar() {
   const r = Math.floor(Math.random() * 5) + 1;
-  return `url(Gambar_Ganti/makan${r}.jpg)`;
+  return r
 }
 
-judul.addEventListener('mouseenter', () => {
+
+function gantiGambarOtomatis() {
   header.style.transform = 'scale(1.5)';
   header.style.opacity = '0';
   setTimeout(() => {
-    header.style.backgroundImage = getRandomGambar();
+    header.style.backgroundImage = `url(Gambar_Ganti/makan${getRandomGambar()}.jpg)`;
     header.style.transform = 'scale(0.5)';
     
     setTimeout(() => {
@@ -137,7 +138,13 @@ judul.addEventListener('mouseenter', () => {
       header.style.transform = 'scale(1)';
     }, 50);
   }, 500);
-});
+};
+setInterval(gantiGambarOtomatis, 3000);
+
+const sejarah = document.querySelector(".flip-card-front")
+sejarah.addEventListener("mouseenter", () => {
+  sejarah.style.backgroundImage = `url(Gambar_Tempat/gambar${getRandomGambar()}.jpg)`;
+})
 
 
 
@@ -154,3 +161,31 @@ const navLinks = document.getElementById('nav-links');
 toggle.addEventListener('click', () => {
   navLinks.classList.toggle('show');
 });
+
+
+const shuss = document.querySelector(".kataisi");
+const cardhead1 = document.querySelector(".cardHeader01");
+const cardhead2 = document.querySelector(".cardHeader02");
+const cardhead3 = document.querySelector(".cardHeader03");
+const cardhead4 = document.querySelector(".cardHeader04");
+const isinyashuss = document.querySelector(".isikata");
+const katacard = document.querySelector(".katacard");
+
+isinyashuss.addEventListener("click", () => {
+  shuss.style.transform = "translateX(-200%)";
+  cardhead1.style.transform = "rotate(-15deg) translateY(-210px)";
+  cardhead2.style.transform = "rotate(15deg) translateY(210px)";
+  cardhead3.style.transform = "rotate(-50deg) translateY(-300px)";
+  cardhead4.style.transform = "rotate(40deg) translateY(210px)";
+  setTimeout(() => {
+    shuss.style.transform = "translateX(0%)";
+    cardhead1.style.transform = "rotate(5deg) translateY(20px)";
+    cardhead2.style.transform = "rotate(-9deg) translateY(20px)";
+    cardhead3.style.transform = "rotate(-5deg) translateY(20px)";
+    cardhead4.style.transform = "rotate(9deg) translateY(20px)";
+  }, 1000); // 3 detik setelah animasi pertama
+});
+
+
+
+
