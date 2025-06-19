@@ -183,7 +183,7 @@ isinyashuss.addEventListener("click", () => {
     cardhead2.style.transform = "rotate(-9deg) translateY(20px)";
     cardhead3.style.transform = "rotate(-5deg) translateY(20px)";
     cardhead4.style.transform = "rotate(9deg) translateY(20px)";
-  }, 1000); // 3 detik setelah animasi pertama
+  }, 1000); 
 });
 
 
