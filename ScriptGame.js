@@ -102,7 +102,7 @@ function jatuh(){
             document.querySelector(".ulang").addEventListener("click", jatuh)
             
         }
-    }, 20)
+    }, 10)
 }
 
 

@@ -55,6 +55,11 @@
     gap: 35px;
 }
 
+.logo1{
+    width: 200px;
+    height: 200px;
+}
+
 .navtengah li a {
     text-decoration: none;
     color: #f06b04;
